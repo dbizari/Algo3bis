@@ -2,11 +2,10 @@ package TP2;
 
 import org.junit.Assert;
 import org.junit.Test;
-import Excepciones.PuntosInsuficientesException;
 
 public class JugadorTest {
 
-    @Test (expected = PuntosInsuficientesException.class)
+    @Test (expected = RuntimeException.class)
     public void testSoloPuedeUsarUnidadesSiTienePuntos () {
         Jugador jugador = new Jugador("juan", 2);
         Unidad unidad1 = new Jinete(1,2);
@@ -27,7 +26,6 @@ public class JugadorTest {
         jugador.colocarUnidad(unidad7);
         jugador.colocarUnidad(unidad8);
         jugador.colocarUnidad(unidad9);
-
     }
 
     @Test
@@ -47,13 +45,16 @@ public class JugadorTest {
         jugador1.colocarUnidad(unidad2);
         jugador1.colocarUnidad(unidad3);
         jugador1.colocarUnidad(unidad4);
+
+        jugador1.atacarUnidad(unidad1);
+        jugador1.atacarUnidad(unidad2);
+
         jugador2.colocarUnidad(unidad5);
         jugador2.colocarUnidad(unidad6);
         jugador2.colocarUnidad(unidad7);
         jugador2.colocarUnidad(unidad8);
         jugador2.colocarUnidad(unidad9);
-        jugador1.atacarUnidad(unidad1);
-        jugador1.atacarUnidad(unidad2);
+
         jugador1.atacarUnidad(unidad3);
         jugador1.atacarUnidad(unidad4);
 

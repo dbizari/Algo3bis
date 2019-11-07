@@ -1,5 +1,6 @@
 package TP2;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class Jugador {
@@ -17,7 +18,12 @@ public class Jugador {
     }
 
     public void colocarUnidad(Unidad unidad) {
-        this.puntos.descontarPuntos(unidad.getCosto());
+        try {
+            puntos.descontarPuntos(unidad.getCosto());
+        } catch (Excepciones.PuntosInsuficientesException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
         unidades.add(unidad);
     }
 
@@ -31,12 +37,14 @@ public class Jugador {
 
     public void atacarUnidad (Unidad unidad) {
 
-        for (int i=0; i < unidades.size(); i++){
+        Brujula brujula = new Brujula();
 
-            if (unidades.get(i).getCoordenadas() == unidad.getCoordenadas()){
+        for (int i = 0; i < unidades.size(); i++){
+
+            if (brujula.ubicacionEsIgual(unidades.get(i).getCoordenadas(), unidad.getCoordenadas())){
                 unidades.remove(i);
+                return;
             }
-            break;
         }
     }
 
