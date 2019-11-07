@@ -5,38 +5,29 @@ package TP2;
 
 import org.junit.Assert;
 import org.junit.Test;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
-import static junit.framework.TestCase.assertTrue;
+import java.math.BigDecimal;
 
 public class TableroTest {
-    @Test public void testTableroEsCreadoCorrectamenteConAltoYAncho() {
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Integer ancho = 20;
-        Integer alto = 20;
+    @Test
+    public void testTableroEsCreadoCorrectamenteConAltoYAncho() {
 
-        Tablero tablero = new Tablero( ancho, alto, jugador1, jugador2);
-
-        Assert.assertEquals(new BigDecimal(20), new BigDecimal(tablero.getAncho()));
-        Assert.assertEquals(new BigDecimal(20), new BigDecimal(tablero.getAlto()));
+        Tablero tablero = new Tablero();
+        Assert.assertEquals(new BigDecimal(10), tablero.getLargoSector1());
+        Assert.assertEquals(new BigDecimal(10), tablero.getLargoSector2());
     }
 
-    @Test public void testTableroEsCreadoCorrectamenteConDosSectores(){
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Integer ancho = 20;
-        Integer alto = 20;
+    @Test
+    public void testNoSePuedeColocarUnaPiezaAliadaEnUnCasilleroDelSectorEnemigo(){
+        Tablero tablero = new Tablero();
+        Jugador jugador1 = new Jugador("tomas", 1);
+        Jugador jugador2 = new Jugador("tomas", 2);
+        int fila1 = 11;
+        int fila2 = 5;
 
-        Tablero tablero = new Tablero( ancho, alto, jugador1, jugador2);
+        Assert.assertEquals(false, tablero.colocarPieza(jugador1.getSector(), fila1));
+        Assert.assertEquals(false, tablero.colocarPieza(jugador2.getSector(), fila2));
 
-        Sector sector1 = tablero.getSector1();
-        Sector sector2 = tablero.getSector2();
-
-        assertTrue(sector1 instanceof Sector);
-        assertTrue(sector2 instanceof Sector);
     }
 }
 
