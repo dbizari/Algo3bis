@@ -6,44 +6,34 @@ import java.util.*;
 
 public class Tablero {
 
-    Integer anchoTablero;
-    Integer altoTablero;
-    Sector sector1;
-    Sector sector2;
+    private List<Fila> sector1; //1 a 10
+    private List<Fila> sector2; //11 a 20
 
-    public Tablero(int ancho, int alto, Jugador jugador1, Jugador jugador2) {
-        anchoTablero = ancho;
-        altoTablero = alto;
+    public Tablero(){
 
-        List<Integer> limiteMinimoSector1 = new ArrayList<Integer>();
-        List<Integer> limiteMaximoSector1 = new ArrayList<Integer>();
-        List<Integer> limiteMinimoSector2 = new ArrayList<Integer>();
-        List<Integer> limiteMaximoSector2 = new ArrayList<Integer>();
-        limiteMinimoSector1.add(0);
-        limiteMinimoSector1.add(0);
-        limiteMaximoSector1.add(alto/2);
-        limiteMaximoSector1.add(ancho);
-        limiteMinimoSector2.add((alto/2)+1);
-        limiteMinimoSector2.add(ancho);
-        limiteMaximoSector2.add(alto);
-        limiteMaximoSector2.add(ancho);
-        sector1 = new Sector(limiteMinimoSector1, limiteMaximoSector1, jugador1);
-        sector2 = new Sector(limiteMinimoSector2, limiteMaximoSector2, jugador2);
+        for(int i = 0; i < 10; ++i) {
+            sector1.add(new Fila());
+        }
+
+        for(int i = 0; i < 10; ++i) {
+            sector2.add(new Fila());
+        }
     }
 
-    public double getAncho() {
-        return anchoTablero;
+    public int getLargoSector1() {
+        return (sector1).size();
     }
 
-    public int getAlto() {
-        return altoTablero;
+    public int getLargoSector2() {
+        return (sector2).size();
     }
 
-    public Sector getSector1() {
-        return sector1;
+    public boolean colocarPieza(int sectorDelJugador, int fila){
+
+        if(sectorDelJugador == 1 && fila > 10 || sectorDelJugador == 2 && fila < 10){
+            return false;
+        }
+        return true;
     }
 
-    public Sector getSector2() {
-        return sector2;
-    }
 }
