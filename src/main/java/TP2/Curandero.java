@@ -1,5 +1,7 @@
 package TP2;
 
+import Excepciones.NoPuedeMoverseException;
+
 public class Curandero extends Movible {
     private int curacion;
 
@@ -12,4 +14,8 @@ public class Curandero extends Movible {
         this.x = x;
         this.y = y;
     }
+    @Override
+    public void mover(int x, int y) throws NoPuedeMoverseException {}
+    @Override
+    public void atacar(){} //TODO pensar regla de ataque
 }

@@ -6,15 +6,13 @@ package TP2;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-
 public class TableroTest {
     @Test
     public void testTableroEsCreadoCorrectamenteConAltoYAncho() {
 
         Tablero tablero = new Tablero();
-        Assert.assertEquals(new BigDecimal(10), tablero.getLargoSector1());
-        Assert.assertEquals(new BigDecimal(10), tablero.getLargoSector2());
+        Assert.assertEquals(10, tablero.getLargoSector1());
+        Assert.assertEquals(10, tablero.getLargoSector2());
     }
 
     @Test

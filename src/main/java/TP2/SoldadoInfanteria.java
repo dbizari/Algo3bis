@@ -1,5 +1,7 @@
 package TP2;
 
+import Excepciones.NoPuedeMoverseException;
+
 public class SoldadoInfanteria extends Movible {
 
     public SoldadoInfanteria(int x, int y){
@@ -10,4 +12,8 @@ public class SoldadoInfanteria extends Movible {
         this.x = x;
         this.y = y;
     }
+    @Override
+    public void mover(int x, int y) throws NoPuedeMoverseException {}
+    @Override
+    public void atacar(){} //TODO pensar regla de ataque
 }
