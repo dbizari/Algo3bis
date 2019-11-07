@@ -3,6 +3,10 @@
  */
 package TP2;
 
+import Excepciones.CeldaDeTerritorioEnemigo;
+import Excepciones.CeldaOcupada;
+import Excepciones.CoordenadaFueraDeRango;
+import Excepciones.PuntosInsuficientesException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,22 +14,42 @@ public class TableroTest {
     @Test
     public void testTableroEsCreadoCorrectamenteConAltoYAncho() {
 
-        Tablero tablero = new Tablero();
-        Assert.assertEquals(10, tablero.getLargoSector1());
-        Assert.assertEquals(10, tablero.getLargoSector2());
+        AlgoChess juego = new AlgoChess(20, 20);
+        Assert.assertEquals(20, juego.getCantFilasTablero());
+        Assert.assertEquals(20, juego.getCantColumnasTablero());
+    }
+
+    @Test (expected = CeldaDeTerritorioEnemigo.class)
+    public void testNoSePuedeColocarUnaPiezaAliadaEnUnCasilleroDelSectorEnemigo() throws CoordenadaFueraDeRango, CeldaOcupada, CeldaDeTerritorioEnemigo, PuntosInsuficientesException {
+
+        AlgoChess juego = new AlgoChess(20, 20);
+        juego.agregarJugador("pedro", 1);
+        juego.agregarJugador("juan", 2);
+
+        juego.colocarCatapultaPara("pedro", 11, 5);
+
     }
 
     @Test
-    public void testNoSePuedeColocarUnaPiezaAliadaEnUnCasilleroDelSectorEnemigo(){
-        Tablero tablero = new Tablero();
-        Jugador jugador1 = new Jugador("tomas", 1);
-        Jugador jugador2 = new Jugador("tomas", 2);
-        int fila1 = 11;
-        int fila2 = 5;
+    public void testSeColocaUnidadEnSectorAliadoConExito() throws CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada, PuntosInsuficientesException {
 
-        Assert.assertEquals(false, tablero.colocarPieza(jugador1.getSector(), fila1));
-        Assert.assertEquals(false, tablero.colocarPieza(jugador2.getSector(), fila2));
+        AlgoChess juego = new AlgoChess(20, 20);
+        juego.agregarJugador("pedro", 1);
+        juego.agregarJugador("juan", 2);
+
+        juego.colocarCatapultaPara("pedro", 8, 5);
 
     }
+
+    @Test (expected = CeldaOcupada.class)
+    public void testNoSePuedeColocarUnidadEnCeldaOcupada() throws CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada, PuntosInsuficientesException {
+        AlgoChess juego = new AlgoChess(20, 20);
+        juego.agregarJugador("pedro", 1);
+        juego.agregarJugador("juan", 2);
+
+        juego.colocarCatapultaPara("pedro", 8, 5);
+        juego.colocarCuranderoPara("pedro", 8, 5);
+    }
+
 }
 

@@ -1,65 +1,49 @@
 package TP2;
 
+import Excepciones.*;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class JugadorTest {
 
     @Test (expected = RuntimeException.class)
-    public void testSoloPuedeUsarUnidadesSiTienePuntos () {
-        Jugador jugador = new Jugador("juan", 2);
-        Unidad unidad1 = new Jinete(1,2);
-        Unidad unidad2 = new Jinete(2,2);
-        Unidad unidad3 = new Jinete(3,2);
-        Unidad unidad4 = new Jinete(4,2);
-        Unidad unidad5 = new Jinete(5,2);
-        Unidad unidad6 = new Jinete(6,2);
-        Unidad unidad7 = new SoldadoInfanteria(1,4);
-        Unidad unidad8 = new SoldadoInfanteria(1,5);
-        Unidad unidad9 = new SoldadoInfanteria(1,6);
-        jugador.colocarUnidad(unidad1);
-        jugador.colocarUnidad(unidad2);
-        jugador.colocarUnidad(unidad3);
-        jugador.colocarUnidad(unidad4);
-        jugador.colocarUnidad(unidad5);
-        jugador.colocarUnidad(unidad6);
-        jugador.colocarUnidad(unidad7);
-        jugador.colocarUnidad(unidad8);
-        jugador.colocarUnidad(unidad9);
+    public void testSoloPuedeUsarUnidadesSiTienePuntos () throws CeldaDeTerritorioEnemigo, CeldaOcupada, PuntosInsuficientesException, CoordenadaFueraDeRango {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria", 1);
+        juego.colocarJinetePara("maria", 1,1);
+        juego.colocarJinetePara("maria", 1,2);
+        juego.colocarJinetePara("maria", 1,3);
+        juego.colocarJinetePara("maria", 1,4);
+        juego.colocarJinetePara("maria", 1,5);
+        juego.colocarJinetePara("maria", 1,6);
+        juego.colocarJinetePara("maria", 1,7);
     }
 
     @Test
-    public void pierdeElJugadorQueNoTieneMasUnidades() {
-        Jugador jugador1 = new Jugador("juan", 1);
-        Jugador jugador2 = new Jugador("Tomas", 2);
-        Unidad unidad1 = new Jinete(1,2);
-        Unidad unidad2 = new Jinete(1,3);
-        Unidad unidad3 = new Jinete(1,4);
-        Unidad unidad4 = new Jinete(1,5);
-        Unidad unidad5 = new Jinete(11,6);
-        Unidad unidad6 = new Jinete(11,7);
-        Unidad unidad7 = new SoldadoInfanteria(11,8);
-        Unidad unidad8 = new SoldadoInfanteria(12,0);
-        Unidad unidad9 = new SoldadoInfanteria(13,0);
-        jugador1.colocarUnidad(unidad1);
-        jugador1.colocarUnidad(unidad2);
-        jugador1.colocarUnidad(unidad3);
-        jugador1.colocarUnidad(unidad4);
+    public void pierdeElJugadorQueNoTieneMasUnidades() throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque {
+        AlgoChess juego = new AlgoChess(20,20);
 
-        jugador1.atacarUnidad(unidad1);
-        jugador1.atacarUnidad(unidad2);
+        juego.agregarJugador("maria", 1);
+        juego.colocarJinetePara("maria", 9,1);
+        juego.colocarJinetePara("maria", 9,2);
+        juego.colocarJinetePara("maria", 9,3);
+        juego.colocarJinetePara("maria", 9,4);
 
-        jugador2.colocarUnidad(unidad5);
-        jugador2.colocarUnidad(unidad6);
-        jugador2.colocarUnidad(unidad7);
-        jugador2.colocarUnidad(unidad8);
-        jugador2.colocarUnidad(unidad9);
+        juego.agregarJugador("jose", 1);
+        juego.colocarJinetePara("jose", 11,1);
+        juego.colocarJinetePara("jose", 11,2);
+        juego.colocarJinetePara("jose", 11,3);
+        juego.colocarJinetePara("jose", 11,4);
 
-        jugador1.atacarUnidad(unidad3);
-        jugador1.atacarUnidad(unidad4);
+        for(int i= 0; i < 20; i++){
+            juego.atacarDesdeHasta(9,1,11,1);
+            juego.atacarDesdeHasta(9,2,11,2);
+            juego.atacarDesdeHasta(9,3,11,3);
+            juego.atacarDesdeHasta(9,4,11,4);
 
-        Assert.assertFalse(jugador2.perdio());
-        Assert.assertTrue(jugador1.perdio());
+        }
 
+        Assert.assertTrue(juego.seTermino());
     }
+
 }

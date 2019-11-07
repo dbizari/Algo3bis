@@ -4,38 +4,73 @@
 package TP2;
 import java.util.*;
 
+import Excepciones.*;
+
 public class Tablero {
 
-    private ArrayList<Fila> sector1; //1 a 10
-    private ArrayList<Fila> sector2; //11 a 20
+    private Arbitro arbitro;
+    private ArrayList<Fila> tablero;
 
-    public Tablero(){
-        sector1 = new ArrayList<Fila>();
-        sector2 = new ArrayList<Fila>();
+    public Tablero(Integer cantFilas, Integer cantCol){
+        tablero = new ArrayList<Fila>();
+        arbitro = new Arbitro(cantCol, cantFilas, 0, 0, cantFilas/2);
 
-        for(int i = 0; i < 10; ++i) {
-            sector1.add(new Fila());
-        }
-
-        for(int i = 0; i < 10; ++i) {
-            sector2.add(new Fila());
+        for(int i = 0; i < cantFilas; i++) {
+            tablero.add(new Fila(cantCol));
         }
     }
 
-    public int getLargoSector1() {
-        return (sector1).size();
+    public int getCantFilas() {
+        return tablero.size();
     }
 
-    public int getLargoSector2() {
-        return (sector2).size();
+    public int getCantColumnas() {
+        return (tablero.get(0)).getCantColumnas();
     }
 
-    public boolean colocarPieza(int sectorDelJugador, int fila){
-
-        if(sectorDelJugador == 1 && fila > 10 || sectorDelJugador == 2 && fila < 10){
-            return false;
-        }
-        return true;
+    private Celda getCelda(int x, int y) {
+        Fila fila = tablero.get(x-1);
+        Celda celda = fila.getCelda(y);
+        return celda;
     }
 
+    public ArrayList<Integer> getCoordenadasUnidadEn(int x, int y) {
+        Celda celda = getCelda(x, y);
+        return celda.getUnidad().getCoordenadas();
+    }
+
+    public void colocarUnidad(Unidad unidad) throws CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
+        arbitro.estaAdentroDelTablero(unidad);
+        arbitro.estaEnSectorAliado(unidad);
+        ArrayList<Integer> coordenadas = unidad.getCoordenadas();
+        int x = coordenadas.get(0);
+        int y = coordenadas.get(1);
+        Celda celda = getCelda(x, y);
+        celda.colocarUnidad(unidad);
+    }
+
+    public void atacarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+        Celda celdaAliada = getCelda(desdeFil, desdeCol);
+        Celda celdaEnemiga = getCelda(hastaFil, hastaCol);
+        celdaAliada.atacar(celdaEnemiga);
+    }
+
+    public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException {
+        Celda celdaNueva = this.getCelda(hastaFil, hastaCol);
+        Celda celdaActual = this.getCelda(desdeFil, desdeCol);
+        celdaNueva.colocarUnidad(celdaActual.getUnidad());
+        celdaActual.vaciar();
+        celdaNueva.getUnidad().mover(hastaFil, hastaCol);
+    }
+
+    public int verVida(int x, int y) {
+        Celda celda = getCelda(x,y);
+        return celda.getUnidad().verVida();
+    }
+
+    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+        Celda celdaCuradora = getCelda(desdeFil, desdeCol);
+        Celda celdaLastimada = getCelda(hastaFil, hastaCol);
+        celdaCuradora.curar(celdaLastimada);
+    }
 }

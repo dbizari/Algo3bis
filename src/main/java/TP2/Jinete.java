@@ -11,9 +11,9 @@ public class Jinete extends Movible {
         this.danioADistancia = 15;
         this.x = x;
         this.y = y;
+        this.gps = new GPS();
     }
+
     @Override
-    public void mover(int x, int y) throws NoPuedeMoverseException {}
-    @Override
-    public void atacar(){} //TODO pensar regla de ataque
+    public void curar(Unidad unidad);
 }
