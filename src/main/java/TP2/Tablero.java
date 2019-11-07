@@ -6,10 +6,12 @@ import java.util.*;
 
 public class Tablero {
 
-    private List<Fila> sector1; //1 a 10
-    private List<Fila> sector2; //11 a 20
+    private ArrayList<Fila> sector1; //1 a 10
+    private ArrayList<Fila> sector2; //11 a 20
 
     public Tablero(){
+        sector1 = new ArrayList<Fila>();
+        sector2 = new ArrayList<Fila>();
 
         for(int i = 0; i < 10; ++i) {
             sector1.add(new Fila());
