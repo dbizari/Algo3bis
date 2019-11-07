@@ -1,8 +1,9 @@
 package TP2;
 
+import Excepciones.NoPuedeCurar;
 import Excepciones.NoPuedeMoverseException;
 
-public class SoldadoInfanteria extends Movible {
+public class SoldadoInfanteria extends NoCura {
 
     public SoldadoInfanteria(int x, int y){
         this.vida = 100;
@@ -13,7 +14,4 @@ public class SoldadoInfanteria extends Movible {
         this.y = y;
         this.gps = new GPS();
     }
-
-    @Override
-    public abstract void curar(Unidad unidad);
 }

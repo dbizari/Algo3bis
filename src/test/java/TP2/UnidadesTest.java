@@ -91,7 +91,7 @@ public class UnidadesTest {
     }
 
     @Test
-    public void testCuranderoAgregaVidaCorrecta() throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+    public void testCuranderoAgregaVidaCorrecta() throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);

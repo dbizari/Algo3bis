@@ -64,7 +64,7 @@ public class AlgoChess {
        tablero.atacarDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
     }
 
-    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
         tablero.curarDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
     }
 

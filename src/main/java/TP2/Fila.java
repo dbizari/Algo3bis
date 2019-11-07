@@ -6,8 +6,8 @@ public class Fila {
 
     private List<Celda> celdas;
 
-    public Fila(Integer cantCol){
-        for(Integer i = 0; i < cantCol; ++i) {
+    public Fila(int cantCol){
+        for(int i = 0; i < cantCol; ++i) {
             celdas.add(new Celda());
         }
     }

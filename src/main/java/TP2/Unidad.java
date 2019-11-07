@@ -1,5 +1,6 @@
 package TP2;
 
+import Excepciones.NoPuedeCurar;
 import Excepciones.NoPuedeMoverseException;
 import Excepciones.PuntosInsuficientesException;
 
@@ -16,7 +17,7 @@ public abstract class Unidad {
     protected GPS gps;
 
     public abstract void mover(int x, int y) throws NoPuedeMoverseException;
-    public abstract void curar(Unidad unidad);
+    public abstract void curar(Unidad unidad) throws NoPuedeCurar;
 
     public void atacar(Unidad unidad) {
         if(gps.estanADistanciaCercana(this, unidad)) {

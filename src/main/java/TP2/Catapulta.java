@@ -1,8 +1,6 @@
 package TP2;
 
-import Excepciones.NoPuedeMoverseException;
-
-public class Catapulta extends NoMovible {
+public class Catapulta extends NoMovibleYNoCura {
 
     public Catapulta (int x, int y) {
         this.vida = 50;
@@ -13,7 +11,4 @@ public class Catapulta extends NoMovible {
         this.y = y;
         this.gps = new GPS();
     }
-
-    @Override
-    public void curar(Unidad unidad);
 }

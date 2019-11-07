@@ -1,8 +1,8 @@
 package TP2;
 
-import Excepciones.NoPuedeMoverseException;
+import Excepciones.NoPuedeCurar;
 
-public class Jinete extends Movible {
+public class Jinete extends NoCura {
 
     public Jinete (int x, int y) {
         this.vida = 100;
@@ -13,7 +13,4 @@ public class Jinete extends Movible {
         this.y = y;
         this.gps = new GPS();
     }
-
-    @Override
-    public void curar(Unidad unidad);
 }

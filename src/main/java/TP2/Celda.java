@@ -3,6 +3,7 @@ package TP2;
 import Excepciones.CeldaOcupada;
 import Excepciones.ErrorAutoAtaque;
 import Excepciones.ErrorNoHayUnidadAtacante;
+import Excepciones.NoPuedeCurar;
 
 public class Celda {
 
@@ -50,7 +51,7 @@ public class Celda {
         this.unidad.atacar(celdaEnemiga.getUnidad());
     }
 
-    public void curar(Celda celdaLastimada) {
+    public void curar(Celda celdaLastimada) throws NoPuedeCurar {
         this.unidad.curar(celdaLastimada.getUnidad());
     }
 

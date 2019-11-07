@@ -2,7 +2,7 @@ package TP2;
 
 import Excepciones.NoPuedeMoverseException;
 
-public class Curandero extends Movible {
+public class Curandero extends PuedeCurar {
 
     private int curacion;
 

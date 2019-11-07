@@ -68,7 +68,7 @@ public class Tablero {
         return celda.getUnidad().verVida();
     }
 
-    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
         Celda celdaCuradora = getCelda(desdeFil, desdeCol);
         Celda celdaLastimada = getCelda(hastaFil, hastaCol);
         celdaCuradora.curar(celdaLastimada);
