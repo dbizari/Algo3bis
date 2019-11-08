@@ -4,8 +4,6 @@ import Excepciones.NoPuedeMoverseException;
 
 public class Curandero extends PuedeCurar {
 
-    private int curacion;
-
     public Curandero (int x, int y) {
         this.vida = 75;
         this.costo = 2;
@@ -17,9 +15,4 @@ public class Curandero extends PuedeCurar {
         this.gps = new GPS();
     }
 
-    public void curar(Unidad unidad) {
-        if(gps.estanADistanciaCercana(this, unidad)) {
-            unidad.ganarVida(this.curacion);
-        }
-    }
 }

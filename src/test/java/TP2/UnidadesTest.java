@@ -50,7 +50,7 @@ public class UnidadesTest {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
-        juego.agregarJugador("jose", 1);
+        juego.agregarJugador("jose", 2);
 
         juego.colocarJinetePara("maria", 9,1);
         juego.colocarSoldadoInfanteriaPara("jose", 11,1);
@@ -65,7 +65,7 @@ public class UnidadesTest {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
-        juego.agregarJugador("jose", 1);
+        juego.agregarJugador("jose", 2);
 
         juego.colocarJinetePara("maria", 9,1);
         juego.colocarSoldadoInfanteriaPara("jose", 11,1);
@@ -80,7 +80,7 @@ public class UnidadesTest {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
-        juego.agregarJugador("jose", 1);
+        juego.agregarJugador("jose", 2);
 
         juego.colocarJinetePara("maria", 3,1);
         juego.colocarCatapultaPara("jose", 11,1);
@@ -95,14 +95,17 @@ public class UnidadesTest {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
-        juego.agregarJugador("jose", 1);
+        juego.agregarJugador("jose", 2);
 
         juego.colocarJinetePara("maria", 9,1);
-        juego.colocarCuranderoPara("jose", 10, 1);
+        juego.colocarCuranderoPara("jose", 12, 1);
         juego.colocarSoldadoInfanteriaPara("jose", 11,1);
 
         juego.atacarDesdeHasta(9, 1, 11,1);
-        juego.curarDesdeHasta(10,1,11,1);
+        juego.atacarDesdeHasta(9, 1, 11,1);
+        juego.atacarDesdeHasta(9, 1, 11,1);
+        juego.atacarDesdeHasta(9, 1, 11,1);
+        juego.curarDesdeHasta(12,1,11,1);
 
         Assert.assertEquals(95, juego.verVida(11,1));
     }

@@ -5,6 +5,8 @@ import Excepciones.NoPuedeCurar;
 public abstract class PuedeCurar extends Movible {
 
     public void curar(Unidad unidad) throws NoPuedeCurar {
-        this.curar(unidad);
+        if(gps.estanADistanciaCercana(this, unidad)) {
+            unidad.ganarVida(this.curacion);
+        }
     }
 }

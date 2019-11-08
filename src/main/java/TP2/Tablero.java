@@ -11,7 +11,7 @@ public class Tablero {
     private Arbitro arbitro;
     private ArrayList<Fila> tablero;
 
-    public Tablero(Integer cantFilas, Integer cantCol){
+    public Tablero(int cantFilas, int cantCol){
         tablero = new ArrayList<Fila>();
         arbitro = new Arbitro(cantCol, cantFilas, 0, 0, cantFilas/2);
 

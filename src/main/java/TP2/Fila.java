@@ -1,12 +1,13 @@
 package TP2;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Fila {
 
-    private List<Celda> celdas;
+    private ArrayList<Celda> celdas;
 
     public Fila(int cantCol){
+        this.celdas = new ArrayList<Celda>();
         for(int i = 0; i < cantCol; ++i) {
             celdas.add(new Celda());
         }

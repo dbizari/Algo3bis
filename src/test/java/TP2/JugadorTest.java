@@ -29,7 +29,7 @@ public class JugadorTest {
         juego.colocarJinetePara("maria", 9,3);
         juego.colocarJinetePara("maria", 9,4);
 
-        juego.agregarJugador("jose", 1);
+        juego.agregarJugador("jose", 2);
         juego.colocarJinetePara("jose", 11,1);
         juego.colocarJinetePara("jose", 11,2);
         juego.colocarJinetePara("jose", 11,3);

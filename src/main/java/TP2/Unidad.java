@@ -11,6 +11,7 @@ public abstract class Unidad {
     protected int costo;
     protected int danioCuerpoACuerpo;
     protected int danioADistancia;
+    protected int curacion;
     protected int x;
     protected int y;
     private Jugador dueño;
@@ -58,6 +59,8 @@ public abstract class Unidad {
     public void ganarVida(int cantVida) {
         vida = vida + cantVida;
     }
+    //HAY QUE VERIFICAR QUE SI SUPERA LA VIDA ORIGINAL DEL BJETO NO SE SUME, SINO QUE VUELVA A LA VIDA TOTAL PERO NUNCA
+    //MAS QUE ESO PORQUE SERIA UN BUG
 
     public int verVida(){
         return vida;
