@@ -11,12 +11,10 @@ public abstract class Unidad {
     protected int danioADistancia;
     protected int curacion;
     protected Coordenada coordenada;
-    //protected int x;
-    //protected int y;
     private Jugador dueño;
     protected GPS gps;
 
-    public abstract void mover(int x, int y) throws NoPuedeMoverseException;
+    public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
 
     public void atacar(Unidad unidad) {

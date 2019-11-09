@@ -94,7 +94,8 @@ public class Tablero {
         Celda celdaActual = this.getCelda(desdeFil, desdeCol);
         celdaNueva.colocarUnidad(celdaActual.getUnidad());
         celdaActual.vaciar();
-        celdaNueva.getUnidad().mover(hastaFil, hastaCol);
+        Coordenada coordenadaAMover = getCoordenada(hastaFil, hastaCol);
+        celdaNueva.getUnidad().mover(coordenadaAMover);
     }
 
     public int verVida(int x, int y) throws CoordenadaFueraDeRango {

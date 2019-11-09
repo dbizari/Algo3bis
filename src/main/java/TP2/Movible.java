@@ -2,6 +2,7 @@ package TP2;
 
 public abstract class Movible extends Unidad {
 
-    public void mover(int x, int y) {
+    public void mover(Coordenada coordenada) {
+        this.coordenada = coordenada;
     }
 }

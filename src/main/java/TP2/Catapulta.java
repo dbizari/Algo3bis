@@ -1,5 +1,7 @@
 package TP2;
 
+import Excepciones.NoPuedeMoverseException;
+
 public class Catapulta extends NoMovibleYNoCura {
 
     public Catapulta (Coordenada coordenadaUnidad) {
@@ -9,5 +11,10 @@ public class Catapulta extends NoMovibleYNoCura {
         this.danioADistancia = 20;
         this.coordenada = coordenadaUnidad;
         this.gps = new GPS();
+    }
+
+    @Override
+    public void mover(Coordenada coordenada) throws NoPuedeMoverseException {
+        throw new NoPuedeMoverseException();
     }
 }
