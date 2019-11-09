@@ -8,6 +8,5 @@ public class Jinete extends NoCura {
         this.danioCuerpoACuerpo = 5;
         this.danioADistancia = 15;
         this.coordenada = coordenadaUnidad;
-        this.gps = new GPS();
     }
 }

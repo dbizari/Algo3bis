@@ -8,6 +8,5 @@ public class SoldadoInfanteria extends NoCura {
         this.danioCuerpoACuerpo = 10;
         this.danioADistancia = 0;
         this.coordenada = coordenadaUnidad;
-        this.gps = new GPS();
     }
 }

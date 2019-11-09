@@ -12,13 +12,12 @@ public abstract class Unidad {
     protected int curacion;
     protected Coordenada coordenada;
     private Jugador dueño;
-    protected GPS gps;
 
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
 
     public void atacar(Unidad unidad) {
-        if(gps.estanADistanciaCercana(this, unidad)) {
+        if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
         } else {
             unidad.sufrirAtaque(this.danioADistancia);

@@ -9,7 +9,6 @@ public class Curandero extends PuedeCurar {
         this.danioADistancia = 0;
         this.curacion = 15;
         this.coordenada = coordenadaUnidad;
-        this.gps = new GPS();
     }
 
 }

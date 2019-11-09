@@ -10,7 +10,6 @@ public class Catapulta extends NoMovibleYNoCura {
         this.danioCuerpoACuerpo = 0;
         this.danioADistancia = 20;
         this.coordenada = coordenadaUnidad;
-        this.gps = new GPS();
     }
 
     @Override

@@ -6,7 +6,6 @@ public class Jugador {
     private String nombre;
     private int cantUnidades;
     private int sector;
-    private GPS GPS;
 
     public Jugador(String nombre, int sector) {
         cantUnidades = 0;
