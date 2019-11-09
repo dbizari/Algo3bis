@@ -2,9 +2,6 @@ package TP2;
 
 import Excepciones.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class AlgoChess {
 
     private Tablero tablero;
@@ -31,26 +28,30 @@ public class AlgoChess {
     }
 
     public void colocarCatapultaPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
-        Catapulta catapulta = new Catapulta(x, y); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
+        Catapulta catapulta = new Catapulta(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
         Jugador jugador = identificarJugador(nombreJugador);
         catapulta.colocarUnidad(jugador);
         this.colocarUnidad(catapulta);
     }
 
     public void colocarSoldadoInfanteriaPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
-        SoldadoInfanteria soldadoInfanteria = new SoldadoInfanteria(x, y); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
+        SoldadoInfanteria soldadoInfanteria = new SoldadoInfanteria(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
         Jugador jugador = identificarJugador(nombreJugador);
         soldadoInfanteria.colocarUnidad(jugador);
         this.colocarUnidad(soldadoInfanteria);
     }
     public void colocarCuranderoPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
-        Curandero curandero = new Curandero(x, y); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
+        Curandero curandero = new Curandero(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
         Jugador jugador = identificarJugador(nombreJugador);
         curandero.colocarUnidad(jugador);
         this.colocarUnidad(curandero);
     }
     public void colocarJinetePara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
-        Jinete jinete = new Jinete(x, y); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
+        Jinete jinete = new Jinete(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
         Jugador jugador = identificarJugador(nombreJugador);
         jinete.colocarUnidad(jugador);
         this.colocarUnidad(jinete);
@@ -60,15 +61,15 @@ public class AlgoChess {
         tablero.colocarUnidad(unidad);
     }
 
-    public void atacarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+    public void atacarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
        tablero.atacarDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
     }
 
-    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
         tablero.curarDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
     }
 
-    public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException {
+    public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
         tablero.moverUnidadDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
     }
 
@@ -91,12 +92,12 @@ public class AlgoChess {
         return false;
     }
 
-    public ArrayList<Integer> getCoordenadasUnidadEn(int x, int y) {
+    public Coordenada getCoordenadasUnidadEn(int x, int y) throws CoordenadaFueraDeRango {
         //CLASE SOLO PARA PROBAR CORRECTO FUNCIONAMIENTO, DEBERIA SER PRIVADA
         return tablero.getCoordenadasUnidadEn(x, y);
     }
 
-    public int verVida(int x, int y) {
+    public int verVida(int x, int y) throws CoordenadaFueraDeRango{
         return tablero.verVida(x, y);
     }
 }

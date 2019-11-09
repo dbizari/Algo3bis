@@ -1,9 +1,5 @@
 package TP2;
 
-import Excepciones.ErrorAutoAtaque;
-
-import java.util.ArrayList;
-
 public class GPS {
 
     private int maxDistanciaCercana = 2;
@@ -22,16 +18,16 @@ public class GPS {
     } */
 
     public boolean estanADistanciaCercana(Unidad unidad1, Unidad unidad2) {
-        ArrayList<Integer> coordenadas1 = unidad1.getCoordenadas();
-        int x1 = coordenadas1.get(0);
-        int y1 = coordenadas1.get(1);
-        ArrayList<Integer> coordenadas2 = unidad2.getCoordenadas();
-        int x2 = coordenadas2.get(0);
-        int y2 = coordenadas2.get(1);
+        Coordenada coordenadas1 = unidad1.getCoordenadas();
+        int x1 = coordenadas1.getCoordenadaX();
+        int y1 = coordenadas1.getCoordenadaY();
+        Coordenada coordenadas2 = unidad2.getCoordenadas();
+        int x2 = coordenadas2.getCoordenadaX();
+        int y2 = coordenadas2.getCoordenadaY();
 
         /*if(moduloDiferencia(x1,x2) == 0 && moduloDiferencia(y1,y2) == 0){
             throw new ErrorAutoAtaque();
-        }*/ // HAY QUE VERIFICAR QUE NO SEA UN AUTOATAQUE PORQUE SERIA UN BUG
+        } // HAY QUE VERIFICAR QUE NO SEA UN AUTOATAQUE PORQUE SERIA UN BUG*/
 
         if( moduloDiferencia(x1, x2) <= maxDistanciaCercana && moduloDiferencia(y1, y2) <= maxDistanciaCercana) {
             return true;

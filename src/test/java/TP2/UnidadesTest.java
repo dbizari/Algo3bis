@@ -4,8 +4,6 @@ import Excepciones.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class UnidadesTest {
 
     @Test
@@ -19,18 +17,14 @@ public class UnidadesTest {
         juego.moverUnidadDesdeHasta(10,7,4,5);
         juego.moverUnidadDesdeHasta(4,5,18,18);
 
-        ArrayList<Integer> coordenadas1 = new ArrayList<Integer>();
-        coordenadas1.add(18);
-        coordenadas1.add(18);
+        Coordenada coordenadas1 = new Coordenada(18,18);
 
-        ArrayList<Integer> coordenadas2 = juego.getCoordenadasUnidadEn(18, 18);
+        Coordenada coordenadas2 = juego.getCoordenadasUnidadEn(18, 18);
 
         boolean sonIguales = true;
 
-        for (int i= 0; i < coordenadas1.size(); i++) {
-            if(coordenadas1.get(i) != coordenadas2.get(i)) {
+        if(coordenadas1.getCoordenadaX() != coordenadas2.getCoordenadaX() || coordenadas1.getCoordenadaY() != coordenadas2.getCoordenadaY()) {
                 Assert.assertFalse(sonIguales);
-            }
         }
         Assert.assertTrue(sonIguales);
 

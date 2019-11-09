@@ -4,16 +4,15 @@ import Excepciones.NoPuedeCurar;
 import Excepciones.NoPuedeMoverseException;
 import Excepciones.PuntosInsuficientesException;
 
-import java.util.ArrayList;
-
 public abstract class Unidad {
     protected int vida;
     protected int costo;
     protected int danioCuerpoACuerpo;
     protected int danioADistancia;
     protected int curacion;
-    protected int x;
-    protected int y;
+    protected Coordenada coordenada;
+    //protected int x;
+    //protected int y;
     private Jugador dueño;
     protected GPS gps;
 
@@ -42,11 +41,8 @@ public abstract class Unidad {
         dueño = jugador;
     }
 
-    public ArrayList<Integer> getCoordenadas(){
-        ArrayList<Integer> coordenadas = new ArrayList<Integer>();
-        coordenadas.add(x);
-        coordenadas.add(y);
-        return coordenadas;
+    public Coordenada getCoordenadas(){
+        return coordenada;
     }
 
     public void sufrirAtaque(int danio) {

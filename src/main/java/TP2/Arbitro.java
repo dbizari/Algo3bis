@@ -1,11 +1,6 @@
 package TP2;
 
-import Excepciones.CeldaDeTerritorioEnemigo;
-import Excepciones.CoordenadaFueraDeRango;
-
-import java.util.ArrayList;
-
-public class Arbitro {
+/*public class Arbitro {
 
     private Integer rangoMaxCol;
     private Integer rangoMaxFil;
@@ -22,8 +17,8 @@ public class Arbitro {
     }
 
     public void estaAdentroDelTablero(Unidad unidad) throws CoordenadaFueraDeRango {
-        ArrayList<Integer> coordenadas = unidad.getCoordenadas();
-        if(coordenadas.get(0) > rangoMaxFil || coordenadas.get(0) < rangoMinFil || coordenadas.get(1) > rangoMaxCol || coordenadas.get(1) < rangoMinCol) {
+        Coordenada coordenadas = unidad.getCoordenadas();
+        if(coordenadas.getCoordenadaX(0) > rangoMaxFil || coordenadas.getCoordenadaY(0) < rangoMinFil || coordenadas.getCoordenadaX() > rangoMaxCol || coordenadas.get(1) < rangoMinCol) {
             throw new CoordenadaFueraDeRango();
         }
     }
@@ -35,4 +30,4 @@ public class Arbitro {
             throw new CeldaDeTerritorioEnemigo();
         }
     }
-}
+}*/
