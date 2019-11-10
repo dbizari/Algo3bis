@@ -55,7 +55,7 @@ public class Tablero {
         throw new CoordenadaFueraDeRango();
     }
 
-    private Celda getCelda(int x, int y) throws CoordenadaFueraDeRango {
+    public Celda getCelda(int x, int y) throws CoordenadaFueraDeRango {
         //VER SI SE PUEDE CAMBIAR POR TABLERO.GET(COORDENADA), PASANDO COMO PARAMETRO LA COORDENADA.
         Set<Coordenada> setCoordenadas = tablero.keySet();
         for (Coordenada coordenada : setCoordenadas) {

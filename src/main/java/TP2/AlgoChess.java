@@ -100,4 +100,8 @@ public class AlgoChess {
     public int verVida(int x, int y) throws CoordenadaFueraDeRango{
         return tablero.verVida(x, y);
     }
+
+    public Celda getCelda(int x, int y) throws CoordenadaFueraDeRango {
+        return tablero.getCelda(x,y);
+    }
 }
