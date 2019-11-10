@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class PuntosInsuficientesException extends Throwable {
+public class PuntosInsuficientesException extends Exception {
     public PuntosInsuficientesException() {
         super();
 

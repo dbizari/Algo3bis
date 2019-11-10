@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class ErrorAutoAtaque  extends Throwable {
+public class ErrorAutoAtaque  extends Exception {
     public ErrorAutoAtaque() {
         super();
 

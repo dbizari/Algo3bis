@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class CeldaOcupada  extends Throwable {
+public class CeldaOcupada  extends Exception {
     public CeldaOcupada() {
         super();
 

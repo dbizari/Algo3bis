@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class NoPuedeMoverseException  extends Throwable {
+public class NoPuedeMoverseException  extends Exception {
     public NoPuedeMoverseException() {
         super();
 

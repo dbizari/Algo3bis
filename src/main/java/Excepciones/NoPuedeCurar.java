@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class NoPuedeCurar  extends Throwable {
+public class NoPuedeCurar  extends Exception {
     public NoPuedeCurar() {
         super();
 

@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class ErrorNoHayUnidadAtacante  extends Throwable {
+public class ErrorNoHayUnidadAtacante  extends Exception {
     public ErrorNoHayUnidadAtacante() {
         super();
 

@@ -1,6 +1,6 @@
 package Excepciones;
 
-public class NoPuedeAtacar  extends Throwable {
+public class NoPuedeAtacar  extends Exception {
     public NoPuedeAtacar() {
         super();
 
