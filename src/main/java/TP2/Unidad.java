@@ -59,4 +59,15 @@ public abstract class Unidad {
         return vida;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if(o == null || !(o instanceof Unidad))
+            return false;
+
+        Unidad u = (Unidad)o;
+        if(this.dueño == u.dueño && this.coordenada.equals(u))
+            return true;
+
+        return false;
+    }
 }

@@ -16,7 +16,7 @@ public class Celda {
 
     public Unidad getUnidad() {
 
-        if(ocupada) {
+        if(unidad != null) {
             return unidad;
         }
         return null;
@@ -31,7 +31,7 @@ public class Celda {
             throw new CeldaOcupada();
         }
         this.unidad = unidad;
-        ocupada = true;
+        this.ocupada = true;
     }
 
     private void esCeldaEnemiga(Celda celda) throws ErrorAutoAtaque {
@@ -57,6 +57,17 @@ public class Celda {
 
     public void vaciar() {
         ocupada = false;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || !(o instanceof Celda))
+            return false;
+        Celda c = (Celda)o;
+        if(this.unidad.equals(c.unidad))
+            return true;
+
+        return false;
     }
 }
 

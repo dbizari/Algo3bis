@@ -2,6 +2,9 @@ package TP2;
 
 import Excepciones.*;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class AlgoChess {
 
     private Tablero tablero;
@@ -37,7 +40,7 @@ public class AlgoChess {
 
     public void colocarSoldadoInfanteriaPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
-        SoldadoInfanteria soldadoInfanteria = new SoldadoInfanteria(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        SoldadoInfanteria soldadoInfanteria = new SoldadoInfanteria(coordenadaUnidad);
         Jugador jugador = identificarJugador(nombreJugador);
         soldadoInfanteria.colocarUnidad(jugador);
         this.colocarUnidad(soldadoInfanteria);
@@ -70,7 +73,24 @@ public class AlgoChess {
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+        int tempX;
+        int tempY;
+        if(this.getCelda(desdeFil,desdeCol).getUnidad() instanceof SoldadoInfanteria){
+            List<Celda> soldados = new LinkedList<Celda>();
+            soldados.add(this.getCelda(desdeFil,desdeCol));
+            tablero.buscarSoldadosContiguos(desdeFil,desdeCol,soldados);
+            int deltaFil = hastaFil - desdeFil;
+            int deltaCol = hastaCol - desdeCol;
+            for (Celda celda : soldados) {
+                tempX = celda.getUnidad().getCoordenadas().getCoordenadaX();
+                tempY = celda.getUnidad().getCoordenadas().getCoordenadaY();
+                tablero.moverUnidadDesdeHasta(tempX,tempY,tempX + deltaFil,tempY+deltaCol);
+            }
+            return;
+        }
+
         tablero.moverUnidadDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
+        return;
     }
 
     public int getCantFilasTablero() {

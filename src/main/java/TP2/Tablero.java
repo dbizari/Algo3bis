@@ -6,6 +6,7 @@ package TP2;
 import Excepciones.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public class Tablero {
@@ -96,6 +97,51 @@ public class Tablero {
         celdaActual.vaciar();
         Coordenada coordenadaAMover = getCoordenada(hastaFil, hastaCol);
         celdaNueva.getUnidad().mover(coordenadaAMover);
+    }
+
+    public void buscarSoldadosContiguos(int x, int y,List<Celda> soldados){
+        this.buscarSoldadosAdistancia1(x,y,soldados);
+        while (soldados.size() > 3){
+            soldados.remove(soldados.size() - 1);
+        }
+        /*for (int i = 0; i < soldados.size(); i++) {
+            buscarSoldadosContiguos(soldados.get(i).getUnidad().getCoordenadas().getCoordenadaX(),soldados.get(i).getUnidad().getCoordenadas().getCoordenadaY(),soldados);
+            if(soldados.size() == 3)
+                break;
+        }*/
+        return;
+        //Buscar contiguos a distancia 1
+        //Meterme recursivamente en uno y buscar contiguos si el largo de soldados no es mayor a 3
+        // repetir para cada uno hasta llegar a 3
+        // devolver
+    }
+
+    private void buscarSoldadosAdistancia1(int x, int y,List<Celda> soldDist1){
+        try {
+            int tempX = x+1;
+            int tempY = y;
+            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
+                soldDist1.add(this.getCelda(tempX,tempY));
+            }
+            tempX = x-1;
+            tempY = y;
+            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
+                soldDist1.add(this.getCelda(tempX,tempY));
+            }
+            tempX = x;
+            tempY = y+1;
+            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
+                soldDist1.add(this.getCelda(tempX,tempY));
+            }
+            tempX = x;
+            tempY = y-1;
+            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
+                soldDist1.add(this.getCelda(tempX,tempY));
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
+        }
+        return;
     }
 
     public int verVida(int x, int y) throws CoordenadaFueraDeRango {

@@ -30,6 +30,6 @@ public class SoldadosTest {
 
         Assert.assertTrue(celda1.estaOcupada());
         //Assert.assertTrue(celda2.estaOcupada());
-        //Assert.assertTrue(celda3.estaOcupada());
+        Assert.assertTrue(celda3.estaOcupada());
     }
 }

@@ -58,4 +58,16 @@ public class Coordenada {
         }
         return n2-n1;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || !(o instanceof Coordenada))
+            return false;
+
+        Coordenada c = (Coordenada)o;
+        if(this.x == c.getCoordenadaX() && this.y == c.getCoordenadaY())
+            return true;
+
+        return false;
+    }
 }
