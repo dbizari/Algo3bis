@@ -61,12 +61,11 @@ public class Celda {
 
     @Override
     public boolean equals(Object o){
-        if(o == null || !(o instanceof Celda))
-            return false;
-        Celda c = (Celda)o;
-        if(this.unidad.equals(c.unidad))
-            return true;
-
+        if(o instanceof Celda){
+            Celda c = (Celda) o;
+            if(this.unidad.equals(c.unidad))
+                return true;
+        }
         return false;
     }
 }

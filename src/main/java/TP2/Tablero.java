@@ -101,14 +101,19 @@ public class Tablero {
 
     public void buscarSoldadosContiguos(int x, int y,List<Celda> soldados){
         this.buscarSoldadosAdistancia1(x,y,soldados);
-        while (soldados.size() > 3){
-            soldados.remove(soldados.size() - 1);
+        if (soldados.size() >= 3) {
+            while (soldados.size() > 3){
+                soldados.remove(soldados.size() - 1);
+            }
+            return;
+        }else {
+            //TODO cada vez que entra en la recursividad esto arranca de 0 entonces siempre toma el primer nodo, pensar mejor el algoritmo!!!
+            for (int i = 1; i < soldados.size(); i++) { //cambie i = 0 por 1
+                buscarSoldadosContiguos(soldados.get(i).getUnidad().getCoordenadas().getCoordenadaX(),soldados.get(i).getUnidad().getCoordenadas().getCoordenadaY(),soldados);
+                if(soldados.size() == 3)
+                    break;
+            }
         }
-        /*for (int i = 0; i < soldados.size(); i++) {
-            buscarSoldadosContiguos(soldados.get(i).getUnidad().getCoordenadas().getCoordenadaX(),soldados.get(i).getUnidad().getCoordenadas().getCoordenadaY(),soldados);
-            if(soldados.size() == 3)
-                break;
-        }*/
         return;
         //Buscar contiguos a distancia 1
         //Meterme recursivamente en uno y buscar contiguos si el largo de soldados no es mayor a 3
@@ -120,6 +125,7 @@ public class Tablero {
         try {
             int tempX = x+1;
             int tempY = y;
+            //TODO el contains no esta funcionando
             if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
                 soldDist1.add(this.getCelda(tempX,tempY));
             }

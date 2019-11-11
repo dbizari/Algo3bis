@@ -84,7 +84,7 @@ public class AlgoChess {
             for (Celda celda : soldados) {
                 tempX = celda.getUnidad().getCoordenadas().getCoordenadaX();
                 tempY = celda.getUnidad().getCoordenadas().getCoordenadaY();
-                tablero.moverUnidadDesdeHasta(tempX,tempY,tempX + deltaFil,tempY+deltaCol);
+                tablero.moverUnidadDesdeHasta(tempX,tempY,tempX + deltaFil,tempY + deltaCol);
             }
             return;
         }

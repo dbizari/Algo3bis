@@ -19,7 +19,7 @@ public class SoldadosTest {
             juego.colocarSoldadoInfanteriaPara("wola",2,1);
             juego.colocarSoldadoInfanteriaPara("wola",2,3);
             //Muevo una pieza
-            juego.moverUnidadDesdeHasta(2,2,3,2);
+            juego.moverUnidadDesdeHasta(2,1,3,1);
             //Obtengo celdas siguientes
             celda1 = juego.getCelda(3,2);
             celda2 = juego.getCelda(3,1);
@@ -29,7 +29,7 @@ public class SoldadosTest {
         }
 
         Assert.assertTrue(celda1.estaOcupada());
-        //Assert.assertTrue(celda2.estaOcupada());
+        Assert.assertTrue(celda2.estaOcupada());
         Assert.assertTrue(celda3.estaOcupada());
     }
 }

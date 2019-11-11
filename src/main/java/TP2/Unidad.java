@@ -61,12 +61,11 @@ public abstract class Unidad {
 
     @Override
     public boolean equals(Object o) {
-        if(o == null || !(o instanceof Unidad))
-            return false;
-
-        Unidad u = (Unidad)o;
-        if(this.dueño == u.dueño && this.coordenada.equals(u))
-            return true;
+        if(o instanceof Unidad){
+            Unidad u = (Unidad) o;
+            if(this.coordenada.equals(u.coordenada)) //Una unidad es igual a otra si esta en la misma coordenada
+                return true;
+        }
 
         return false;
     }
