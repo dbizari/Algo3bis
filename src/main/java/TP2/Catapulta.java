@@ -5,7 +5,7 @@ import Excepciones.NoPuedeMoverseException;
 public class Catapulta extends NoMovibleYNoCura {
 
     public Catapulta (Coordenada coordenadaUnidad) {
-        this.vida = 50;
+        this.vida = new Vida(50);
         this.costo = 5;
         this.danioCuerpoACuerpo = 0;
         this.danioADistancia = 20;

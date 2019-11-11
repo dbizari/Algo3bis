@@ -5,7 +5,7 @@ import Excepciones.NoPuedeMoverseException;
 import Excepciones.PuntosInsuficientesException;
 
 public abstract class Unidad {
-    protected int vida;
+    protected Vida vida;
     protected int costo;
     protected int danioCuerpoACuerpo;
     protected int danioADistancia;
@@ -43,17 +43,15 @@ public abstract class Unidad {
     }
 
     public void sufrirAtaque(int danio) {
-        vida = vida - danio;
-        if (vida <= 0) {
+        vida.sufrirAtaque(danio);
+        if (vida.estaMuerto()) {
             dueño.sufrirAtaque();
         }
     }
 
     public void ganarVida(int cantVida) {
-        vida = vida + cantVida;
+        vida.ganarVida(cantVida);
     }
-    //HAY QUE VERIFICAR QUE SI SUPERA LA VIDA ORIGINAL DEL BJETO NO SE SUME, SINO QUE VUELVA A LA VIDA TOTAL PERO NUNCA
-    //MAS QUE ESO PORQUE SERIA UN BUG
 
     public int verVida(){
         return vida;
