@@ -152,7 +152,7 @@ public class Tablero {
 
     public int verVida(int x, int y) throws CoordenadaFueraDeRango {
         Celda celda = getCelda(x, y);
-        return celda.getUnidad().verVida();
+        return celda.getUnidad().verVidaRestante();
     }
 
     public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {

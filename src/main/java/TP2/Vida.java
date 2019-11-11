@@ -27,4 +27,8 @@ public class Vida {
         }
         return false;
     }
+
+    public int verVidaRestante(){
+        return vidaActual;
+    }
 }

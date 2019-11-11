@@ -53,8 +53,8 @@ public abstract class Unidad {
         vida.ganarVida(cantVida);
     }
 
-    public int verVida(){
-        return vida;
+    public int verVidaRestante(){
+        return vida.verVidaRestante();
     }
 
     @Override
