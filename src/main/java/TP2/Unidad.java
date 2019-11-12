@@ -25,6 +25,19 @@ public abstract class Unidad {
         }
     }
 
+    private int cientoCincoPorcientoDe(int danio) {
+        int danioTotal = danio + (danio*5)/100;
+        return danioTotal;
+    }
+
+    public void atacarConPenalizacion(Unidad unidad) {
+        if(coordenada.estanADistanciaCercana(this, unidad)) {
+            unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioCuerpoACuerpo));
+        } else {
+            unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioADistancia));
+        }
+    }
+
     public int getCosto(){
         return costo;
     }

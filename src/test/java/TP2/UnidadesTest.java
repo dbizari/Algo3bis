@@ -105,5 +105,22 @@ public class UnidadesTest {
     }
 
 
+    @Test
+    public void testRecibePenalizacionAlSerAtacadoEnTerritorioEnemigo() throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango{
+        AlgoChess juego = new AlgoChess(20,20);
+
+        juego.agregarJugador("maria", 1);
+        juego.agregarJugador("jose", 2);
+
+        juego.colocarJinetePara("maria", 9,1);
+        juego.colocarSoldadoInfanteriaPara("jose", 11,1);
+
+        juego.moverUnidadDesdeHasta(9,1,12, 1);
+        juego.atacarDesdeHasta(11, 1, 12,1);
+
+        Assert.assertEquals(90, juego.verVida(12,1));
+
+    }
+
 
 }

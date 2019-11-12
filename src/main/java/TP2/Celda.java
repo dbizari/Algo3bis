@@ -54,9 +54,9 @@ public class Celda {
         if(!celdaEnemiga.estaOcupada()) {
             return; //Ataca igual a la nada (se termina su turno)
         }
-        /*if(!esDeSectorAliado(this.unidad.getDueño())){
+        if(!esDeSectorAliado(this.unidad.getDueño())){
             this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad());
-        }*/
+        }
         this.unidad.atacar(celdaEnemiga.getUnidad());
     }
 
