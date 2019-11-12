@@ -34,14 +34,14 @@ public class Celda {
         this.ocupada = true;
     }
 
-    private void esCeldaEnemiga(Celda celda) throws ErrorAutoAtaque {
+    private void celdaEstaOcupadaPorEnemigo(Celda celda) throws ErrorAutoAtaque {
         if (this.unidad.getDueño() == celda.getUnidad().getDueño() ) {
             throw new ErrorAutoAtaque();
         }
     }
 
     public void atacar(Celda celdaEnemiga) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
-        esCeldaEnemiga(celdaEnemiga);
+        celdaEstaOcupadaPorEnemigo(celdaEnemiga);
         if(!estaOcupada()) {
             throw new ErrorNoHayUnidadAtacante();
         }
