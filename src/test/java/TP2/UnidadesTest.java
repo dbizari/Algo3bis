@@ -117,8 +117,8 @@ public class UnidadesTest {
 
         juego.moverUnidadDesdeHasta(9,1,12, 1);
         juego.atacarDesdeHasta(11, 1, 12,1);
-
-        Assert.assertEquals(90, juego.verVida(12,1));
+        
+        Assert.assertEquals(89.5, juego.verVida(12, 1), 0.5);
 
     }
 
