@@ -28,11 +28,11 @@ public class Coordenada {
         }
     }
 
-    public void enSectorAliado(Jugador jugador) throws CeldaDeTerritorioEnemigo {
+    /*public void enSectorAliado(Jugador jugador) throws CeldaDeTerritorioEnemigo {
         if (jugador.getSector() == 1 && this.x > 10 || jugador.getSector() == 2 && this.x < 10){
             throw new CeldaDeTerritorioEnemigo();
         }
-    }
+    }*/
 
     public boolean estanADistanciaCercana(Unidad unidad1, Unidad unidad2) {
         Coordenada coordenadas1 = unidad1.getCoordenadas();

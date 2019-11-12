@@ -9,9 +9,11 @@ public class Celda {
 
     private boolean ocupada;
     private Unidad unidad;
+    protected int sector;
 
-    public Celda(){
+    public Celda(int sector){
         ocupada = false;
+        this.sector = sector;
     }
 
     public Unidad getUnidad() {
@@ -40,6 +42,10 @@ public class Celda {
         }
     }
 
+    public boolean esDeSectorAliado(Jugador jugador) {
+        return this.sector == jugador.getSector();
+    }
+
     public void atacar(Celda celdaEnemiga) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
         celdaEstaOcupadaPorEnemigo(celdaEnemiga);
         if(!estaOcupada()) {
@@ -48,6 +54,9 @@ public class Celda {
         if(!celdaEnemiga.estaOcupada()) {
             return; //Ataca igual a la nada (se termina su turno)
         }
+        /*if(!esDeSectorAliado(this.unidad.getDueño())){
+            this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad());
+        }*/
         this.unidad.atacar(celdaEnemiga.getUnidad());
     }
 

@@ -11,21 +11,29 @@ import java.util.Set;
 
 public class Tablero {
 
-    //private Arbitro arbitro;
     private HashMap<Coordenada, Celda> tablero;
     private int filasTotales;
     private int columnasTotales;
+    private int finSectorUno;
 
     public Tablero(int cantFilas, int cantCol) {
+
         tablero = new HashMap<Coordenada, Celda>();
-        //arbitro = new Arbitro(cantCol, cantFilas, 0, 0, cantFilas/2);
         filasTotales = cantFilas;
         columnasTotales = cantCol;
+        finSectorUno = (cantFilas/2);
+        int sector;
 
-        for(int i=0; i< cantCol; i++){
-            for(int j = 0; j < cantFilas; j++) {
+        for(int i=0; i< cantFilas; i++){
+            for(int j = 0; j < cantCol; j++) {
                 Coordenada coordenada = new Coordenada(i,j);
-                tablero.put(coordenada, new Celda());
+                //ESTA BIEN ESTE IF??
+                if(i < finSectorUno) {
+                    sector = 1;
+                } else {
+                    sector = 2;
+                }
+                tablero.put(coordenada, new Celda(sector));
             }
         }
     }
@@ -77,10 +85,13 @@ public class Tablero {
         Coordenada coordenadas = unidad.getCoordenadas();
         Jugador jugador = unidad.getDueño();
         coordenadas.coordenadaDentroDeTablero(filasTotales, 0, columnasTotales, 0);
-        coordenadas.enSectorAliado(jugador);
+        //coordenadas.enSectorAliado(jugador);
         int x = coordenadas.getCoordenadaX();
         int y = coordenadas.getCoordenadaY();
         Celda celda = getCelda(x, y);
+        if(!celda.esDeSectorAliado(jugador)) {
+            throw new CeldaDeTerritorioEnemigo();
+        }
         celda.colocarUnidad(unidad);
     }
 
