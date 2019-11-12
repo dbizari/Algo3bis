@@ -1,5 +1,6 @@
 package TP2;
 
+import Excepciones.ErrorAutoAtaque;
 import Excepciones.NoPuedeCurar;
 import Excepciones.NoPuedeMoverseException;
 import Excepciones.PuntosInsuficientesException;
@@ -16,7 +17,7 @@ public abstract class Unidad {
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
 
-    public void atacar(Unidad unidad) {
+    public void atacar(Unidad unidad) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
         } else {

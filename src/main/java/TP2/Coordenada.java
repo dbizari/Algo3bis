@@ -35,7 +35,6 @@ public class Coordenada {
     }
 
     public boolean estanADistanciaCercana(Unidad unidad1, Unidad unidad2) {
-        // HAY QUE VERIFICAR QUE NO SEA UN AUTOATAQUE PORQUE SERIA UN BUG
         Coordenada coordenadas1 = unidad1.getCoordenadas();
         Coordenada coordenadas2 = unidad2.getCoordenadas();
 
@@ -45,11 +44,7 @@ public class Coordenada {
         int x2 = coordenadas2.getCoordenadaX();
         int y2 = coordenadas2.getCoordenadaY();
 
-        if( moduloDiferencia(x1, x2) <= maxDistanciaCercana && moduloDiferencia(y1, y2) <= maxDistanciaCercana) {
-            return true;
-        } else {
-            return false;
-        }
+        return moduloDiferencia(x1, x2) <= maxDistanciaCercana && moduloDiferencia(y1, y2) <= maxDistanciaCercana;
     }
 
     public int moduloDiferencia(int n1, int n2) {

@@ -35,17 +35,17 @@ public class Celda {
     }
 
     private void esCeldaEnemiga(Celda celda) throws ErrorAutoAtaque {
-        if (this.unidad.getDueño().getSector() == celda.getUnidad().getDueño().getSector() ) {
+        if (this.unidad.getDueño() == celda.getUnidad().getDueño() ) {
             throw new ErrorAutoAtaque();
         }
     }
 
     public void atacar(Celda celdaEnemiga) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
         esCeldaEnemiga(celdaEnemiga);
-        if(estaOcupada() == false) {
+        if(!estaOcupada()) {
             throw new ErrorNoHayUnidadAtacante();
         }
-        if(celdaEnemiga.estaOcupada() == false) {
+        if(!celdaEnemiga.estaOcupada()) {
             return; //Ataca igual a la nada (se termina su turno)
         }
         this.unidad.atacar(celdaEnemiga.getUnidad());

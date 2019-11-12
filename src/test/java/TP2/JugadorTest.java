@@ -46,4 +46,17 @@ public class JugadorTest {
         Assert.assertTrue(juego.seTermino());
     }
 
+    @Test (expected = ErrorAutoAtaque.class)
+    public void testNoSePuedeAutoAtacar () throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque {
+        AlgoChess juego = new AlgoChess(20,20);
+
+        juego.agregarJugador("maria", 1);
+        juego.colocarJinetePara("maria", 9,1);
+
+        juego.agregarJugador("jose", 2);
+        juego.colocarJinetePara("jose", 11,1);
+
+        juego.atacarDesdeHasta(9, 1, 9, 1);
+    }
+
 }
