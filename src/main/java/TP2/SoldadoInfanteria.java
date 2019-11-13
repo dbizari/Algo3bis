@@ -20,4 +20,8 @@ public class SoldadoInfanteria extends NoCura {
             unidad.sufrirAtaque(this.danioADistancia);
         }
     }
+
+    public void recibirInvitacionABatallon(Batallon unBatallon){
+        return;
+    }
 }

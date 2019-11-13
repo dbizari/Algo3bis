@@ -13,4 +13,8 @@ public abstract class NoMovibleYNoCura extends Unidad {
     public void curar(Unidad unidad) throws NoPuedeCurar {
         throw new NoPuedeCurar();
     }
+
+    public void recibirInvitacionABatallon(Batallon unBatallon){
+        return;
+    }
 }

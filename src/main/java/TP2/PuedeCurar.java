@@ -9,4 +9,8 @@ public abstract class PuedeCurar extends Movible {
             unidad.ganarVida(this.curacion);
         }
     }
+
+    public void recibirInvitacionABatallon(Batallon unBatallon){
+        return;
+    }
 }

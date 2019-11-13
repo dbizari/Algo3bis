@@ -24,4 +24,8 @@ public class Jinete extends NoCura {
         }
         estado.atacar(this, otraUnidad);
     }
+
+    public void recibirInvitacionABatallon(Batallon unBatallon){
+        return;
+    }
 }
