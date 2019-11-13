@@ -5,6 +5,8 @@ import Excepciones.NoPuedeCurar;
 import Excepciones.NoPuedeMoverseException;
 import Excepciones.PuntosInsuficientesException;
 
+import java.util.List;
+
 public abstract class Unidad {
     protected Vida vida;
     protected int costo;
@@ -12,18 +14,20 @@ public abstract class Unidad {
     protected int danioADistancia;
     protected int curacion;
     protected Coordenada coordenada;
-    private Jugador dueño;
+    protected List<Unidad> enemigosCercanos;
+    protected List<Unidad> aliadosCercanos;
+    private Jugador duenio;
 
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
 
-    public void atacar(Unidad unidad) throws ErrorAutoAtaque {
+    public abstract void atacar(Unidad unidad) throws ErrorAutoAtaque;/* {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
         } else {
             unidad.sufrirAtaque(this.danioADistancia);
         }
-    }
+    }*/
 
     private int cientoCincoPorcientoDe(int danio) {
         int danioTotal = danio + (danio*5)/100;
@@ -43,13 +47,13 @@ public abstract class Unidad {
     }
 
     public Jugador getDueño(){
-        return dueño;
+        return duenio;
     }
 
     public void colocarUnidad(Jugador jugador) throws PuntosInsuficientesException {
 
         jugador.colocarUnidad(this);
-        dueño = jugador;
+        duenio = jugador;
     }
 
     public Coordenada getCoordenadas(){
@@ -59,7 +63,7 @@ public abstract class Unidad {
     public void sufrirAtaque(int danio) {
         vida.sufrirAtaque(danio);
         if (vida.estaMuerto()) {
-            dueño.sufrirAtaque();
+            duenio.sufrirAtaque();
         }
     }
 
@@ -80,5 +84,13 @@ public abstract class Unidad {
         }
 
         return false;
+    }
+
+    public void recibirEnemigosCercanos(List<Unidad> enemigos) {
+        this.enemigosCercanos = enemigos;
+    }
+
+    public void recibirAliadosCercanos(List<Unidad> aliados) {
+        this.aliadosCercanos = aliados;
     }
 }

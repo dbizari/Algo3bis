@@ -5,6 +5,8 @@ import Excepciones.ErrorAutoAtaque;
 import Excepciones.ErrorNoHayUnidadAtacante;
 import Excepciones.NoPuedeCurar;
 
+import java.util.List;
+
 public class Celda {
 
     private boolean ocupada;
@@ -46,7 +48,7 @@ public class Celda {
         return this.sector == jugador.getSector();
     }
 
-    public void atacar(Celda celdaEnemiga) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+    public void atacar(Celda celdaEnemiga, List<Unidad> enemigos, List<Unidad> aliados) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
         celdaEstaOcupadaPorEnemigo(celdaEnemiga);
         if(!estaOcupada()) {
             throw new ErrorNoHayUnidadAtacante();
@@ -54,6 +56,8 @@ public class Celda {
         if(!celdaEnemiga.estaOcupada()) {
             return; //Ataca igual a la nada (se termina su turno)
         }
+        this.unidad.recibirEnemigosCercanos(enemigos);
+        this.unidad.recibirAliadosCercanos(aliados);
         if(!esDeSectorAliado(this.unidad.getDueño())){
             this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad());
         }

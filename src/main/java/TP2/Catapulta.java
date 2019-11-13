@@ -1,5 +1,6 @@
 package TP2;
 
+import Excepciones.ErrorAutoAtaque;
 import Excepciones.NoPuedeMoverseException;
 
 public class Catapulta extends NoMovibleYNoCura {
@@ -15,5 +16,13 @@ public class Catapulta extends NoMovibleYNoCura {
     @Override
     public void mover(Coordenada coordenada) throws NoPuedeMoverseException {
         throw new NoPuedeMoverseException();
+    }
+
+    public void atacar(Unidad unidad) throws ErrorAutoAtaque {
+        if(coordenada.estanADistanciaCercana(this, unidad)) {
+            unidad.sufrirAtaque(this.danioCuerpoACuerpo);
+        } else {
+            unidad.sufrirAtaque(this.danioADistancia);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package TP2;
 
+import Excepciones.ErrorAutoAtaque;
+
 public class Curandero extends PuedeCurar {
 
     public Curandero (Coordenada coordenadaUnidad) {
@@ -11,4 +13,11 @@ public class Curandero extends PuedeCurar {
         this.coordenada = coordenadaUnidad;
     }
 
+    public void atacar(Unidad unidad) throws ErrorAutoAtaque {
+        if(coordenada.estanADistanciaCercana(this, unidad)) {
+            unidad.sufrirAtaque(this.danioCuerpoACuerpo);
+        } else {
+            unidad.sufrirAtaque(this.danioADistancia);
+        }
+    }
 }

@@ -5,8 +5,9 @@ package TP2;
 
 import Excepciones.*;
 
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Set;
 
 public class Tablero {
@@ -96,9 +97,12 @@ public class Tablero {
     }
 
     public void atacarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
+
         Celda celdaAliada = getCelda(desdeFil, desdeCol);
         Celda celdaEnemiga = getCelda(hastaFil, hastaCol);
-        celdaAliada.atacar(celdaEnemiga);
+        List<Unidad> enemigosCercanos = this.ObtenerEnemigosCercanos(celdaAliada);
+        List<Unidad> aliadosCercanos = this.ObtenerAliadosCercanos(celdaAliada);
+        celdaAliada.atacar(celdaEnemiga, enemigosCercanos, aliadosCercanos);
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
@@ -170,6 +174,48 @@ public class Tablero {
         Celda celdaCuradora = getCelda(desdeFil, desdeCol);
         Celda celdaLastimada = getCelda(hastaFil, hastaCol);
         celdaCuradora.curar(celdaLastimada);
+    }
+
+    public List<Unidad> ObtenerEnemigosCercanos (Celda celdaPrincipal) {
+        List<Unidad> EnemigosCercanos = new LinkedList<Unidad>();
+        Unidad unidadPrincipal = celdaPrincipal.getUnidad();
+        Jugador duenioPrincipal = unidadPrincipal.getDueño();
+
+        Coordenada coordenadaPrincipal = celdaPrincipal.getUnidad().getCoordenadas();
+        Set<Coordenada> setCoordenadas = tablero.keySet();
+        for (Coordenada coordenada : setCoordenadas) {
+            Celda celdaAux = tablero.get(coordenada);
+            Unidad unidadAux = celdaAux.getUnidad();
+            if (unidadAux!=null && unidadAux!=unidadPrincipal) {
+                Jugador duenioAux = unidadAux.getDueño();
+                if(duenioPrincipal!= duenioAux && coordenadaPrincipal.estanADistanciaCercana(unidadPrincipal, unidadAux)) {
+                    EnemigosCercanos.add(unidadAux);
+                }
+            }
+
+        }
+        return EnemigosCercanos;
+    }
+
+    public List<Unidad> ObtenerAliadosCercanos (Celda celdaPrincipal) {
+        List<Unidad> AliadosCercanos = new LinkedList<Unidad>();
+        Unidad unidadPrincipal = celdaPrincipal.getUnidad();
+        Jugador duenioPrincipal = unidadPrincipal.getDueño();
+
+        Coordenada coordenadaPrincipal = celdaPrincipal.getUnidad().getCoordenadas();
+        Set<Coordenada> setCoordenadas = tablero.keySet();
+        for (Coordenada coordenada : setCoordenadas) {
+            Celda celdaAux = tablero.get(coordenada);
+            Unidad unidadAux = celdaAux.getUnidad();
+            if (unidadAux!=null && unidadAux!=unidadPrincipal) {
+                Jugador duenioAux = unidadAux.getDueño();
+                if(duenioPrincipal== duenioAux && coordenadaPrincipal.estanADistanciaCercana(unidadPrincipal, unidadAux)) {
+                    AliadosCercanos.add(unidadAux);
+                }
+            }
+
+        }
+        return AliadosCercanos;
     }
 
 

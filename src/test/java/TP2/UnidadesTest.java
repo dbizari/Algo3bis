@@ -122,5 +122,32 @@ public class UnidadesTest {
 
     }
 
+    @Test
+    public void testJineteSinAliadosCercaYConEnemigosAtacaAEnemigoCercaSeVerificaQueSeRestaLaVidaCorrespondinte() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
 
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarSoldadoInfanteriaPara("jose",10,3);
+
+        juego.atacarDesdeHasta(9,3,10,3);
+
+        Assert.assertEquals(95, juego.verVida(10,3));
+    }
+
+    @Test
+    public void testJineteSinAliadosCercaYConEnemigosCercaAtacaAEnemigoLejosSeVerificaQueSeRestaLaVidaCorrespondinte() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarSoldadoInfanteriaPara("jose",10,3);
+        juego.colocarSoldadoInfanteriaPara("jose", 12,3);
+
+        juego.atacarDesdeHasta(9,3,12,3);
+
+        Assert.assertEquals(100, juego.verVida(10,3));
+    }
 }

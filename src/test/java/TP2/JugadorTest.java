@@ -19,7 +19,7 @@ public class JugadorTest {
         juego.colocarJinetePara("maria", 1,7);
     }
 
-    @Test
+    /*@Test
     public void pierdeElJugadorQueNoTieneMasUnidades() throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque {
         AlgoChess juego = new AlgoChess(20,20);
 
@@ -58,5 +58,5 @@ public class JugadorTest {
 
         juego.atacarDesdeHasta(9, 1, 9, 1);
     }
-
+*/
 }
