@@ -3,6 +3,7 @@ package TP2;
 import Excepciones.ErrorAutoAtaque;
 
 public class SoldadoInfanteria extends NoCura {
+    private Batallon batallon;
 
     public SoldadoInfanteria(Coordenada coordenadaUnidad){
         this.vida = new Vida(100);
