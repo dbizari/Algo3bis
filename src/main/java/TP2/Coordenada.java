@@ -81,4 +81,20 @@ public class Coordenada {
         return (modDiferenciax > maxDistanciaCercana && modDiferenciax<=maxDistanciaMedia) &&
                 (modDiferenciay> maxDistanciaCercana && modDiferenciay<=maxDistanciaMedia);
     }
+
+    public boolean estanADistanciaLejana(Unidad unidad1, Unidad unidad2) {
+        Coordenada coordenadas1 = unidad1.getCoordenadas();
+        Coordenada coordenadas2 = unidad2.getCoordenadas();
+
+        int x1 = coordenadas1.getCoordenadaX();
+        int y1 = coordenadas1.getCoordenadaY();
+
+        int x2 = coordenadas2.getCoordenadaX();
+        int y2 = coordenadas2.getCoordenadaY();
+
+        int modDiferenciax = moduloDiferencia(x1,x2);
+        int modDiferenciay = moduloDiferencia(y1,y2);
+
+        return modDiferenciax>maxDistanciaMedia && modDiferenciay>maxDistanciaMedia;
+    }
 }

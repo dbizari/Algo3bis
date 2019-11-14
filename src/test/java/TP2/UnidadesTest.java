@@ -70,18 +70,48 @@ public class UnidadesTest {
     }
 
     @Test
-    public void testAtaqueConCatapultaDescuentaVidaCorrecta() throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+    public void testAtaqueADistanciaLejanaConCatapultaDescuentaVidaCorrecta() throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
         juego.agregarJugador("jose", 2);
 
         juego.colocarJinetePara("maria", 3,1);
-        juego.colocarCatapultaPara("jose", 11,1);
+        juego.colocarCatapultaPara("jose", 11,9);
 
-        juego.atacarDesdeHasta(11, 1, 3,1);
+        juego.atacarDesdeHasta(11, 9, 3,1);
 
         Assert.assertEquals(80, juego.verVida(3,1));
+    }
+
+    @Test
+    public void testAtaqueADistanciaMediaConCatapultaNoDescuentaVida() throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+        AlgoChess juego = new AlgoChess(20,20);
+
+        juego.agregarJugador("maria", 1);
+        juego.agregarJugador("jose", 2);
+
+        juego.colocarJinetePara("maria", 9,1);
+        juego.colocarCatapultaPara("jose", 14,6);
+
+        juego.atacarDesdeHasta(14, 6, 9,1);
+
+        Assert.assertEquals(100, juego.verVida(9,1));
+    }
+
+    @Test
+    public void testAtaqueADistanciaCercanaConCatapultaNoDescuentaVida() throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, PuntosInsuficientesException, CeldaDeTerritorioEnemigo, CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+        AlgoChess juego = new AlgoChess(20,20);
+
+        juego.agregarJugador("maria", 1);
+        juego.agregarJugador("jose", 2);
+
+        juego.colocarJinetePara("maria", 9,1);
+        juego.colocarCatapultaPara("jose", 11,2);
+
+        juego.atacarDesdeHasta(11, 2, 9,1);
+
+        Assert.assertEquals(100, juego.verVida(9,1));
     }
 
     @Test

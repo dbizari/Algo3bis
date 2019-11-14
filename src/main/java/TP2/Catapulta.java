@@ -19,9 +19,7 @@ public class Catapulta extends NoMovibleYNoCura {
     }
 
     public void atacar(Unidad unidad) throws ErrorAutoAtaque {
-        if(coordenada.estanADistanciaCercana(this, unidad)) {
-            unidad.sufrirAtaque(this.danioCuerpoACuerpo);
-        } else {
+        if(coordenada.estanADistanciaLejana(this, unidad)) {
             unidad.sufrirAtaque(this.danioADistancia);
         }
     }
