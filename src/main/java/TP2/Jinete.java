@@ -19,8 +19,8 @@ public class Jinete extends NoCura {
     public void atacar(Unidad otraUnidad) throws ErrorAutoAtaque {
         if (this.enemigosCercanos.size()!=0 && this.aliadosCercanos.size()==0) {
             estado = new EstadoJineteEspada();
-        /*} else {
-            estado = new EstadoJineteArcoYFlecha(); */
+        } else {
+            estado = new EstadoJineteArcoYFlecha();
         }
         estado.atacar(this, otraUnidad);
     }

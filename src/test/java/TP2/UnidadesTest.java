@@ -137,7 +137,7 @@ public class UnidadesTest {
     }
 
     @Test
-    public void testJineteSinAliadosCercaYConEnemigosCercaAtacaAEnemigoLejosSeVerificaQueSeRestaLaVidaCorrespondinte() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+    public void testJineteSinAliadosCercaYConEnemigosCercaAtacaAEnemigoLejosSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
         AlgoChess juego = new AlgoChess(20,20);
         juego.agregarJugador("maria",1);
         juego.agregarJugador("jose",2);
@@ -149,5 +149,33 @@ public class UnidadesTest {
         juego.atacarDesdeHasta(9,3,12,3);
 
         Assert.assertEquals(100, juego.verVida(10,3));
+    }
+
+    @Test
+    public void testJineteSinEnemigosCercaAtacaADistanciaMediaSeVerificaQueSeRestaLaVidaCorrespondiente() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarSoldadoInfanteriaPara("jose",13,6);
+
+        juego.atacarDesdeHasta(9,3,13,6);
+
+        Assert.assertEquals(85, juego.verVida(13,6));
+    }
+
+    @Test
+    public void testJineteSinEnemigosCercaAtacaADistanciaLejanaSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarSoldadoInfanteriaPara("jose",19,12);
+
+        juego.atacarDesdeHasta(9,3,19,12);
+
+        Assert.assertEquals(100, juego.verVida(19,12));
     }
 }
