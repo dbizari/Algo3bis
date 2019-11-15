@@ -38,4 +38,5 @@ public class SoldadosTest {
     public void TestNoSePuedenMoverHaciaLaCeldaDeAlgunMiembro(){
 
     }
+    //TODO hacer mas tests!
 }
