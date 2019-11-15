@@ -82,7 +82,7 @@ public class Celda {
         return false;
     }
 
-    public boolean esContiguaCon(Unidad uni) {
+    public boolean estaADistancia1(Unidad uni) {
         Coordenada coordOrigen = this.getUnidad().getCoordenadas();
         Coordenada coordUni = uni.getCoordenadas();
 

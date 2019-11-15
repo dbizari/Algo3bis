@@ -103,77 +103,21 @@ public class Tablero {
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
-        Celda celdaNueva = this.getCelda(hastaFil, hastaCol); //TODO esto no es solo una celda, deberia ser una agrupacion desde hasta.
-        Celda celdaActual = this.getCelda(desdeFil, desdeCol);
-        Agrupacion unaAgrupacion = celdaActual.getUnidad().getAgrupacion(); //Puede devolver Una agrupacion activa o inactiva
+        int deltaX = hastaFil - desdeFil;
+        int deltaY = hastaCol - desdeCol;
+        Agrupacion unaAgrupacion = this.getCelda(desdeFil,desdeCol).getUnidad().getAgrupacion(); //Puede devolver Una agrupacion activa o inactiva
         this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unaAgrupacion);
-
-        //Batallon unBatallon = new Batallon(); //TODO Encapsularlo en soldado con agrupaciones
-        //TODO Pedir agrupacion a la unidad actual, enviar invite a todas, la agrupacion se encarga de ver si las agrega o no las agrega, siempre va a estar con una, despues hay que ver si alcanza ono. Agrupacion dame la lista de coordenadas para mover.
+        for(Unidad uni: unaAgrupacion.getMiembros()){
+            Celda celdaNueva = this.getCelda(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
+            Celda celdaActual = this.getCelda(uni.getCoordenadas().getCoordenadaX(),uni.getCoordenadas().getCoordenadaY());
+            celdaNueva.colocarUnidad(celdaActual.getUnidad());
+            celdaActual.vaciar();
+            Coordenada coordenadaAMover = getCoordenada(hastaFil, hastaCol);
+            celdaNueva.getUnidad().mover(coordenadaAMover);
+        }
+        //TODO Pedir agrupacion a la unidad actual, enviar invitacion a todas, la agrupacion se encarga de ver si las agrega o no las agrega, siempre va a estar con una, despues hay que ver si alcanza ono. Agrupacion dame la lista de coordenadas para mover.
         //TODO todas se deben mover con el mismo metodo.
-
-        /*
-        this.getCelda(desdeFil,desdeCol).getUnidad().recibirInvitacionABatallon(unBatallon);
-        if(unBatallon.sePudoUnir(this.getCelda(desdeFil,desdeCol).getUnidad())){
-            this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unBatallon);
-        }*/
-
-        celdaNueva.colocarUnidad(celdaActual.getUnidad());
-        celdaActual.vaciar();
-        Coordenada coordenadaAMover = getCoordenada(hastaFil, hastaCol);
-        celdaNueva.getUnidad().mover(coordenadaAMover);
     }
-    /*
-    public void buscarSoldadosContiguos(int x, int y,List<Celda> soldados){
-        this.buscarSoldadosAdistancia1(x,y,soldados);
-        if (soldados.size() >= 3) {
-            while (soldados.size() > 3){
-                soldados.remove(soldados.size() - 1);
-            }
-            return;
-        }else {
-            //TODO cada vez que entra en la recursividad esto arranca de 0 entonces siempre toma el primer nodo, pensar mejor el algoritmo!!!
-            for (int i = 1; i < soldados.size(); i++) { //cambie i = 0 por 1
-                buscarSoldadosContiguos(soldados.get(i).getUnidad().getCoordenadas().getCoordenadaX(),soldados.get(i).getUnidad().getCoordenadas().getCoordenadaY(),soldados);
-                if(soldados.size() == 3)
-                    break;
-            }
-        }
-        return;
-        //Buscar contiguos a distancia 1
-        //Meterme recursivamente en uno y buscar contiguos si el largo de soldados no es mayor a 3
-        // repetir para cada uno hasta llegar a 3
-        // devolver
-    }
-
-    private void buscarSoldadosAdistancia1(int x, int y,List<Celda> soldDist1){
-        try {
-            int tempX = x+1;
-            int tempY = y;
-            //TODO el contains no esta funcionando
-            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
-                soldDist1.add(this.getCelda(tempX,tempY));
-            }
-            tempX = x-1;
-            tempY = y;
-            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
-                soldDist1.add(this.getCelda(tempX,tempY));
-            }
-            tempX = x;
-            tempY = y+1;
-            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
-                soldDist1.add(this.getCelda(tempX,tempY));
-            }
-            tempX = x;
-            tempY = y-1;
-            if(this.getCelda(tempX,tempY).getUnidad() instanceof SoldadoInfanteria && !soldDist1.contains(this.getCelda(tempX,tempY))){
-                soldDist1.add(this.getCelda(tempX,tempY));
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
-        }
-        return;
-    }*/
 
     public int verVida(int x, int y) throws CoordenadaFueraDeRango {
         Celda celda = getCelda(x, y);
@@ -260,7 +204,7 @@ public class Tablero {
         List<Unidad> aliados = ObtenerAliadosCercanos(celdaOrigen);
 
         for(Unidad uni : aliados){
-            if(celdaOrigen.esContiguaCon(uni))
+            if(celdaOrigen.estaADistancia1(uni))
                 contiguos.add(uni);
         }
         return contiguos;

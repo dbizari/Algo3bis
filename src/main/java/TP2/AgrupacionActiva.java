@@ -7,9 +7,10 @@ public class AgrupacionActiva extends Agrupacion {
     }
 
     public void unirMiembro(Unidad unMiembro){
-        if(miembros.size() >= 3){
+        if(miembros.size() >= 3 || miembros.contains(unMiembro)){
             return;
         }
+
         miembros.add(unMiembro);
     }
 

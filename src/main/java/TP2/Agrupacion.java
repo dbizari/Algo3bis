@@ -12,4 +12,6 @@ public abstract class Agrupacion {
     public abstract void unirMiembro(Unidad unMiembro);
 
     public int getCantidadDeMiembros(){ return miembros.size();} // Solo puesto para hacer testing
+
+    public List<Unidad> getMiembros(){ return miembros;}
 }
