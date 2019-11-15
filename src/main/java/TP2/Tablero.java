@@ -5,10 +5,7 @@ package TP2;
 
 import Excepciones.*;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 public class Tablero {
 
@@ -106,14 +103,27 @@ public class Tablero {
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
-        Celda celdaNueva = this.getCelda(hastaFil, hastaCol);
+        Celda celdaNueva = this.getCelda(hastaFil, hastaCol); //TODO esto no es solo una celda, deberia ser una agrupacion desde hasta.
         Celda celdaActual = this.getCelda(desdeFil, desdeCol);
+        Agrupacion unaAgrupacion = celdaActual.getUnidad().getAgrupacion(); //Puede devolver Una agrupacion activa o inactiva
+        this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unaAgrupacion);
+
+        //Batallon unBatallon = new Batallon(); //TODO Encapsularlo en soldado con agrupaciones
+        //TODO Pedir agrupacion a la unidad actual, enviar invite a todas, la agrupacion se encarga de ver si las agrega o no las agrega, siempre va a estar con una, despues hay que ver si alcanza ono. Agrupacion dame la lista de coordenadas para mover.
+        //TODO todas se deben mover con el mismo metodo.
+
+        /*
+        this.getCelda(desdeFil,desdeCol).getUnidad().recibirInvitacionABatallon(unBatallon);
+        if(unBatallon.sePudoUnir(this.getCelda(desdeFil,desdeCol).getUnidad())){
+            this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unBatallon);
+        }*/
+
         celdaNueva.colocarUnidad(celdaActual.getUnidad());
         celdaActual.vaciar();
         Coordenada coordenadaAMover = getCoordenada(hastaFil, hastaCol);
         celdaNueva.getUnidad().mover(coordenadaAMover);
     }
-
+    /*
     public void buscarSoldadosContiguos(int x, int y,List<Celda> soldados){
         this.buscarSoldadosAdistancia1(x,y,soldados);
         if (soldados.size() >= 3) {
@@ -163,7 +173,7 @@ public class Tablero {
             System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
         }
         return;
-    }
+    }*/
 
     public int verVida(int x, int y) throws CoordenadaFueraDeRango {
         Celda celda = getCelda(x, y);
@@ -219,5 +229,41 @@ public class Tablero {
     }
 
 
+    public void enviarInvitacionAUnidadesContiguas(Celda celdaOrigen, Agrupacion unaAgrupacion) {
+        Queue<Unidad> unidades = obtenerUnidadesADistancia1(celdaOrigen);
+        List<Unidad> visitados = new ArrayList<Unidad>();
+        Queue<Unidad> unidadesTemp;
+        Unidad temp;
+        Celda celdaTemp;
+
+        while (!(unidades.isEmpty())){
+            temp = unidades.remove();
+            visitados.add(temp);
+            temp.recibirInvitacionAAgrupacion(unaAgrupacion);
+            try{
+                celdaTemp = getCelda(temp.getCoordenadas().getCoordenadaX(),temp.getCoordenadas().getCoordenadaY());
+            }catch (Exception e){
+                System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
+                return;
+            }
+            unidadesTemp = obtenerUnidadesADistancia1(celdaTemp);
+            for(Unidad uni : unidadesTemp){
+                if(!visitados.contains(uni)){
+                    unidades.add(uni);
+                }
+            }
+        }
+    }
+
+    private Queue<Unidad> obtenerUnidadesADistancia1(Celda celdaOrigen){
+        Queue<Unidad> contiguos = new LinkedList<>();
+        List<Unidad> aliados = ObtenerAliadosCercanos(celdaOrigen);
+
+        for(Unidad uni : aliados){
+            if(celdaOrigen.esContiguaCon(uni))
+                contiguos.add(uni);
+        }
+        return contiguos;
+    }
 }
 

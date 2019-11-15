@@ -8,19 +8,20 @@ import Excepciones.PuntosInsuficientesException;
 import java.util.List;
 
 public abstract class Unidad {
-    protected Vida vida;
-    protected int costo;
-    protected int danioCuerpoACuerpo;
-    protected int danioADistancia;
-    protected int curacion;
-    protected Coordenada coordenada;
+    protected Vida         vida;
+    protected int          costo;
+    protected int          danioCuerpoACuerpo;
+    protected int          danioADistancia;
+    protected int          curacion;
+    protected Coordenada   coordenada;
     protected List<Unidad> enemigosCercanos;
     protected List<Unidad> aliadosCercanos;
-    private Jugador duenio;
+    private   Jugador      duenio;
+    protected Agrupacion   agrupacion;
 
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
-    public abstract void recibirInvitacionABatallon(Batallon unBatallon); //TODO ver si habria que retornar algo!
+    public abstract void recibirInvitacionAAgrupacion(Agrupacion unaAgrupacion); //TODO ver si habria que retornar algo!
     public abstract void atacar(Unidad unidad) throws ErrorAutoAtaque;/* {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
@@ -93,4 +94,7 @@ public abstract class Unidad {
     public void recibirAliadosCercanos(List<Unidad> aliados) {
         this.aliadosCercanos = aliados;
     }
+
+    public abstract Agrupacion getAgrupacion();
+        //if(this.agrupacion == null)
 }

@@ -2,9 +2,6 @@ package TP2;
 
 import Excepciones.*;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class AlgoChess {
 
     private Tablero tablero;
@@ -73,6 +70,12 @@ public class AlgoChess {
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+        //Se tiene que manejar desde aca la parte de batallon ya que se necesita el tablero para hacer efectivo el movimiento de
+        // las unidades, ya que el mover de las unidades solo cambia sus respectivas coordenadas, pero no los estados de las
+        // celdas.
+
+        // --------------- implementacion vieja de batallon -----------------------------
+        /*
         int tempX;
         int tempY;
         if(this.getCelda(desdeFil,desdeCol).getUnidad() instanceof SoldadoInfanteria){
@@ -87,8 +90,7 @@ public class AlgoChess {
                 tablero.moverUnidadDesdeHasta(tempX,tempY,tempX + deltaFil,tempY + deltaCol);
             }
             return;
-        }
-
+        } */
         tablero.moverUnidadDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
         return;
     }

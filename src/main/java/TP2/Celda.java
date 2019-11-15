@@ -81,5 +81,12 @@ public class Celda {
         }
         return false;
     }
+
+    public boolean esContiguaCon(Unidad uni) {
+        Coordenada coordOrigen = this.getUnidad().getCoordenadas();
+        Coordenada coordUni = uni.getCoordenadas();
+
+        return coordOrigen.estaADistancia1(coordUni);
+    }
 }
 

@@ -97,4 +97,18 @@ public class Coordenada {
 
         return modDiferenciax>maxDistanciaMedia && modDiferenciay>maxDistanciaMedia;
     }
+
+    public boolean estaADistancia1(Coordenada coordUni) {
+        int x1 = this.getCoordenadaX();
+        int y1 = this.getCoordenadaY();
+        int x2 = coordUni.getCoordenadaX();
+        int y2 = coordUni.getCoordenadaY();
+
+        int modDifX = moduloDiferencia(x1,x2);
+        int modDifY = moduloDiferencia(y1,y2);
+
+        double distancia = Math.sqrt((modDifX * modDifX) + (modDifY * modDifY));
+
+        return distancia == 1;
+    }
 }

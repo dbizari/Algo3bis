@@ -18,9 +18,23 @@ public class Catapulta extends NoMovibleYNoCura {
         throw new NoPuedeMoverseException();
     }
 
+    @Override
+    public void recibirInvitacionAAgrupacion(Agrupacion unaAgrupacion) {
+        //No hace nada
+    }
+
     public void atacar(Unidad unidad) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaLejana(this, unidad)) {
             unidad.sufrirAtaque(this.danioADistancia);
         }
+    }
+
+    @Override
+    public Agrupacion getAgrupacion() {
+        if(this.agrupacion == null){
+            this.agrupacion = new AgrupacionInactiva();
+            this.agrupacion.unirMiembro(this);
+        }
+        return this.agrupacion;
     }
 }

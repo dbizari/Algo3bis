@@ -16,6 +16,11 @@ public class Jinete extends NoCura {
 
     }
 
+    @Override
+    public void recibirInvitacionAAgrupacion(Agrupacion unaAgrupacion) {
+        //No hace nada
+    }
+
     public void atacar(Unidad otraUnidad) throws ErrorAutoAtaque {
         if (this.enemigosCercanos.size()!=0 && this.aliadosCercanos.size()==0) {
             estado = new EstadoJineteEspada();
@@ -25,7 +30,12 @@ public class Jinete extends NoCura {
         estado.atacar(this, otraUnidad);
     }
 
-    public void recibirInvitacionABatallon(Batallon unBatallon){
-        return;
+    @Override
+    public Agrupacion getAgrupacion() {
+        if(this.agrupacion == null){
+            this.agrupacion = new AgrupacionInactiva();
+            this.agrupacion.unirMiembro(this);
+        }
+        return this.agrupacion;
     }
 }

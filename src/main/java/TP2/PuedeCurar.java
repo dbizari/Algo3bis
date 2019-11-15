@@ -10,7 +10,7 @@ public abstract class PuedeCurar extends Movible {
         }
     }
 
-    public void recibirInvitacionABatallon(Batallon unBatallon){
+    public void recibirInvitacionAAgrupacion(Unidad unaUnidad){
         return;
     }
 }

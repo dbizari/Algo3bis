@@ -13,11 +13,25 @@ public class Curandero extends PuedeCurar {
         this.coordenada = coordenadaUnidad;
     }
 
+    @Override
+    public void recibirInvitacionAAgrupacion(Agrupacion unaAgrupacion) {
+        //No hace nada
+    }
+
     public void atacar(Unidad unidad) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
         } else {
             unidad.sufrirAtaque(this.danioADistancia);
         }
+    }
+
+    @Override
+    public Agrupacion getAgrupacion() {
+        if(this.agrupacion == null){
+            this.agrupacion = new AgrupacionInactiva();
+            this.agrupacion.unirMiembro(this);
+        }
+        return this.agrupacion;
     }
 }
