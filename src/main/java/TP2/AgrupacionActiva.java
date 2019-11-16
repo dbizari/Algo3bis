@@ -1,5 +1,8 @@
 package TP2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AgrupacionActiva extends Agrupacion {
 
     public AgrupacionActiva(){
@@ -14,9 +17,13 @@ public class AgrupacionActiva extends Agrupacion {
         miembros.add(unMiembro);
     }
 
-    public void moverBatallon(Unidad unidad) {
-        //for (Unidad uni : miembros) {
-            //TODO Ver como resolver
-        //}
+    @Override
+    public List<Unidad> getMiembros(){
+        if(miembros.size() < 3){
+            List<Unidad> tmp = new ArrayList<Unidad>();
+            tmp.add(miembros.get(0));
+            return tmp;
+        }
+        return miembros;
     }
 }

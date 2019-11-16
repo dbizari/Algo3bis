@@ -62,8 +62,4 @@ public class AgrupacionTest {
 
         Assert.assertEquals(1,agrupacion.getCantidadDeMiembros());
     }
-    @Test
-    public void TestAgrupacionActivaSoloSeMueveCon3Miembros(){
-
-    }
 }

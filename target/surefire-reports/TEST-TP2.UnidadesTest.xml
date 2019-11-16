@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="13" failures="0" name="TP2.UnidadesTest" time="0.003" errors="0" skipped="0">
+<testsuite tests="13" failures="0" name="TP2.UnidadesTest" time="0.017" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.4+10-b304.69"/>
@@ -64,17 +64,17 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="TP2.UnidadesTest" name="testJineteSinEnemigosCercaAtacaADistanciaMediaSeVerificaQueSeRestaLaVidaCorrespondiente" time="0"/>
+  <testcase classname="TP2.UnidadesTest" name="testJineteSinEnemigosCercaAtacaADistanciaMediaSeVerificaQueSeRestaLaVidaCorrespondiente" time="0.005"/>
   <testcase classname="TP2.UnidadesTest" name="testAtaqueADistanciaMediaConCatapultaNoDescuentaVida" time="0"/>
-  <testcase classname="TP2.UnidadesTest" name="testAtaqueConSIDescuentaVidaCorrecta" time="0"/>
-  <testcase classname="TP2.UnidadesTest" name="testCuranderoAgregaVidaCorrecta" time="0"/>
+  <testcase classname="TP2.UnidadesTest" name="testAtaqueConSIDescuentaVidaCorrecta" time="0.001"/>
+  <testcase classname="TP2.UnidadesTest" name="testCuranderoAgregaVidaCorrecta" time="0.002"/>
   <testcase classname="TP2.UnidadesTest" name="testAtaqueConJineteDescuentaVidaCorrecta" time="0"/>
-  <testcase classname="TP2.UnidadesTest" name="testJineteSinEnemigosCercaAtacaADistanciaLejanaSeVerificaQueNoSeLeRestaVida" time="0"/>
+  <testcase classname="TP2.UnidadesTest" name="testJineteSinEnemigosCercaAtacaADistanciaLejanaSeVerificaQueNoSeLeRestaVida" time="0.001"/>
   <testcase classname="TP2.UnidadesTest" name="testJineteSinAliadosCercaYConEnemigosCercaAtacaAEnemigoLejosSeVerificaQueNoSeLeRestaVida" time="0"/>
   <testcase classname="TP2.UnidadesTest" name="testRecibePenalizacionAlSerAtacadoEnTerritorioEnemigo" time="0.001"/>
   <testcase classname="TP2.UnidadesTest" name="testJineteSinAliadosCercaYConEnemigosAtacaAEnemigoCercaSeVerificaQueSeRestaLaVidaCorrespondinte" time="0.001"/>
   <testcase classname="TP2.UnidadesTest" name="testAtaqueADistanciaCercanaConCatapultaNoDescuentaVida" time="0"/>
   <testcase classname="TP2.UnidadesTest" name="testUnidadMovibleSePuedeMoverEnTodasLasDirecciones" time="0.001"/>
   <testcase classname="TP2.UnidadesTest" name="testUnidadNoPuedeMoverseACasilleroOcupado" time="0"/>
-  <testcase classname="TP2.UnidadesTest" name="testAtaqueADistanciaLejanaConCatapultaDescuentaVidaCorrecta" time="0"/>
+  <testcase classname="TP2.UnidadesTest" name="testAtaqueADistanciaLejanaConCatapultaDescuentaVidaCorrecta" time="0.005"/>
 </testsuite>
