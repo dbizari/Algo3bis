@@ -14,4 +14,6 @@ public abstract class Agrupacion {
     public int getCantidadDeMiembros(){ return miembros.size();} // Solo puesto para hacer testing
 
     public List<Unidad> getMiembros(){ return miembros;}
+
+    public boolean tieneBatallon(){return miembros.size() == 3;}
 }

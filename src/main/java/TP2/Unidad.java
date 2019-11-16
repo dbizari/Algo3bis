@@ -17,7 +17,6 @@ public abstract class Unidad {
     protected List<Unidad> enemigosCercanos;
     protected List<Unidad> aliadosCercanos;
     private   Jugador      duenio;
-    protected Agrupacion   agrupacion;
 
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;

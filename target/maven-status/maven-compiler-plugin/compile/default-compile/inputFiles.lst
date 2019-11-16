@@ -4,9 +4,11 @@
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/ErrorNoHayUnidadAtacante.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Unidad.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/ErrorAutoAtaque.java
+/Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/AgrupacionInactiva.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Catapulta.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Celda.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/NoPuedeAtacar.java
+/Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/EstadoJineteArcoYFlecha.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Jugador.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/NoMovibleYNoCura.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/NoPuedeCurar.java
@@ -16,13 +18,14 @@
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Tablero.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Movible.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/PuedeCurar.java
+/Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Agrupacion.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/CoordenadaFueraDeRango.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/AlgoChess.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Coordenada.java
-/Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Batallon.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Puntaje.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/NoPuedeMoverseException.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Curandero.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/SoldadoInfanteria.java
+/Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/AgrupacionActiva.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/Excepciones/CeldaDeTerritorioEnemigo.java
 /Users/dbizari/Desktop/Facu/Algo3bis/src/main/java/TP2/Jinete.java

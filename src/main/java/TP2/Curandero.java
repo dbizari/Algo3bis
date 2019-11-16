@@ -28,10 +28,8 @@ public class Curandero extends PuedeCurar {
 
     @Override
     public Agrupacion getAgrupacion() {
-        if(this.agrupacion == null){
-            this.agrupacion = new AgrupacionInactiva();
-            this.agrupacion.unirMiembro(this);
-        }
-        return this.agrupacion;
+        Agrupacion agrupacion = new AgrupacionInactiva();
+        agrupacion.unirMiembro(this);
+        return agrupacion;
     }
 }

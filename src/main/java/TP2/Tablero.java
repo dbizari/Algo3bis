@@ -110,13 +110,17 @@ public class Tablero {
         for(Unidad uni: unaAgrupacion.getMiembros()){
             Celda celdaNueva = this.getCelda(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
             Celda celdaActual = this.getCelda(uni.getCoordenadas().getCoordenadaX(),uni.getCoordenadas().getCoordenadaY());
-            celdaNueva.colocarUnidad(celdaActual.getUnidad());
+            try {
+                celdaNueva.colocarUnidad(celdaActual.getUnidad());
+            }catch (CeldaOcupada e){
+                if(unaAgrupacion.tieneBatallon())
+                    continue;
+                throw new CeldaOcupada();
+            }
             celdaActual.vaciar();
-            Coordenada coordenadaAMover = getCoordenada(hastaFil, hastaCol);
+            Coordenada coordenadaAMover = getCoordenada(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
             celdaNueva.getUnidad().mover(coordenadaAMover);
         }
-        //TODO Pedir agrupacion a la unidad actual, enviar invitacion a todas, la agrupacion se encarga de ver si las agrega o no las agrega, siempre va a estar con una, despues hay que ver si alcanza ono. Agrupacion dame la lista de coordenadas para mover.
-        //TODO todas se deben mover con el mismo metodo.
     }
 
     public int verVida(int x, int y) throws CoordenadaFueraDeRango {
